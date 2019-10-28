@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/putih"
+    android:paddingTop="10dp"
+    android:paddingLeft="25dp"
+    android:id="@+id/dashboard_menu"
+    android:paddingRight="25dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/hitam"
+                android:text="Hai.."
+                fontPath="font/SFProDisplay-Regular.ttf"
+                tools:ignore="MissingPrefix">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eko Alfianto"
+                android:textColor="@color/hitam"
+                android:textSize="20sp"
+                fontPath="font/SFProDisplay-Bold.ttf"
+                tools:ignore="MissingPrefix">
+            </TextView>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/search_activity_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/search"
+                    android:hint="Cari artikel"
+                    android:inputType="text"
+                    android:paddingStart="45dp"
+                    android:textColor="@color/hitam"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_search"
+                    android:layout_marginStart="15dp" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/menu_home"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tips dan Trik"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/hitam"
+            fontPath="font/SFProDisplay-Bold.ttf"
+            tools:ignore="MissingPrefix"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lainnya"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:textSize="13sp"
+            android:textColor="@color/hijauflat"
+            fontPath="font/SFProDisplay-Semibold.ttf"
+            tools:ignore="MissingPrefix"/>
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="140dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="8dp">
+                    <ImageView
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/help">
+                    </ImageView>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:paddingTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="5 Trik meenghindari pelecehan seksual"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="140dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="8dp">
+                    <ImageView
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/help">
+                    </ImageView>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:paddingTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="5 Trik meenghindari pelecehan seksual"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="140dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="8dp">
+                    <ImageView
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/help">
+                    </ImageView>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:paddingTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="5 Trik meenghindari pelecehan seksual"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

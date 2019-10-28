@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:paddingTop="10dp"
+    android:layout_height="wrap_content">
+
+    <!--buat-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="13dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_buat"
+                android:stateListAnimator="@null" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/ic_buat_menu" />
+
+        </FrameLayout>
+
+        <TextView
+            android:paddingTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hitam"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:text="Buat"
+            fontPath="font/SFProDisplay-Semibold.ttf"
+            tools:ignore="MissingPrefix">
+        </TextView>
+
+    </LinearLayout>
+
+    <!-- Lihat-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="13dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_lihat"
+                android:stateListAnimator="@null" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/ic_lihat" />
+
+        </FrameLayout>
+
+        <TextView
+            android:paddingTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hitam"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:text="Lihat"
+            fontPath="font/SFProDisplay-Semibold.ttf"
+            tools:ignore="MissingPrefix">
+        </TextView>
+
+    </LinearLayout>
+
+    <!--Bantuan-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="13dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_bantuan"
+                android:stateListAnimator="@null" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/ic_bantuan" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:text="Bantuan"
+            android:textAlignment="center"
+            android:textColor="@color/hitam"
+            android:textSize="12sp"
+            fontPath="font/SFProDisplay-Semibold.ttf"
+            tools:ignore="MissingPrefix"></TextView>
+
+    </LinearLayout>
+
+    <!--Profil-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="13dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_profil"
+                android:stateListAnimator="@null" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/ic_profil" />
+
+        </FrameLayout>
+
+        <TextView
+            android:paddingTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hitam"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:text="Profil"
+            fontPath="font/SFProDisplay-Semibold.ttf"
+            tools:ignore="MissingPrefix">
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

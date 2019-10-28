@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_nav"
+        android:title="Home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_buat"
+        android:enabled="true"
+        android:icon="@drawable/ic_buat_nav"
+        android:title="Buat"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_bantuan"
+        android:enabled="true"
+        android:icon="@drawable/ic_bantuan_nav"
+        android:title="Bantuan"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_profil"
+        android:enabled="true"
+        android:icon="@drawable/ic_user_nav"
+        android:title="Profil"
+        app:showAsAction="ifRoom" />
+</menu>
