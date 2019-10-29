@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">apkersan2</string>
 
-<!--    <string-array name="tab_title">-->
-<!--        <item>Data Korban</item>-->
-<!--        <item>Isi Laporan</item>-->
-<!--        <item>Konfirmasi</item>-->
-<!--    </string-array>-->
+    <string-array name="jenis_kekerasan">
+        <item>Anak</item>
+        <item>Fisik</item>
+        <item>Rumah Tangga</item>
+        <item>Seksual</item>
+        <item>Verbal</item>
+    </string-array>
 
     <string name="tab_title">Data Korban</string>
 

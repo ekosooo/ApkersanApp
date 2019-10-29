@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Progress_bar">
+        <item name="ms_stepperType">progress_bar</item>
+        <item name="ms_activeStepColor">@color/putih</item>
+        <item name="ms_inactiveStepColor">@color/colorPrimaryDark</item>
+        <item name="ms_bottomNavigationBackground">@color/hijauflat</item>
+    </style>
+
 </resources>

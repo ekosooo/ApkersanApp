@@ -77,7 +77,6 @@
         fontPath="font/SFProDisplay-Regular.ttf"
         tools:ignore="MissingPrefix"/>
 
-
     <RadioGroup
         android:id="@+id/RgKorban"
         android:layout_width="wrap_content"
