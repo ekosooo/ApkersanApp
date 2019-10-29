@@ -194,6 +194,7 @@
                     android:background="@drawable/styleinput"/>
 
                 <TextView
+                    android:id="@+id/TvUnggah"
                     android:gravity="center_vertical"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
@@ -206,6 +207,17 @@
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
+
+                <ImageView
+                    android:id="@+id/IvBuktiKekerasan"
+                    android:scaleType="fitXY"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:visibility="gone">
+                </ImageView>
 
                 <View
                     android:layout_marginTop="10dp"

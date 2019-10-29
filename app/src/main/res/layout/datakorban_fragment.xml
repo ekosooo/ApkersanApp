@@ -173,7 +173,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tempat Lahir"
+        android:text="Pekerjaan"
         android:textSize="14sp"
         fontPath="font/SFProDisplay-Regular.ttf"
         tools:ignore="MissingPrefix"/>
