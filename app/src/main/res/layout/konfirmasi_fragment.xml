@@ -183,7 +183,6 @@
                 android:orientation="vertical"
                 android:paddingLeft="30dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:paddingRight="30dp">
 
                 <TextView
@@ -247,6 +246,31 @@
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
 
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@drawable/styleinput"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp"
+                android:paddingTop="10dp"
+                android:paddingRight="30dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lokasi"
+                    android:textSize="14sp"
+                    android:textColor="@color/hitam"
+                    fontPath="font/SFProDisplay-Bold.ttf"
+                    tools:ignore="MissingPrefix"/>
+
                 <TextView
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
@@ -256,20 +280,28 @@
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/EtTglKejadian"
+                    fontPath="font/SFProDisplay-Regular.ttf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lorem ipsum.."
-                    android:textSize="14sp"
-                    fontPath="font/SFProDisplay-Regular.ttf"
-                    tools:ignore="MissingPrefix"/>
-
+                    android:layout_marginTop="2dp"
+                    android:background="@color/putih"
+                    android:focusable="false"
+                    android:hint="Lorem ipsum"
+                    android:padding="10dp"
+                    android:textColor="@color/hitam"
+                    android:textSize="14dp"
+                    tools:ignore="MissingPrefix" />
             </LinearLayout>
 
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@drawable/styleinput"/>
+
         </LinearLayout>
-
-
-
 
     </ScrollView>
 

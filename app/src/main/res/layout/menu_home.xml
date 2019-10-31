@@ -19,6 +19,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/BtnBuat"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_buat"

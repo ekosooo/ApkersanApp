@@ -1,14 +1,50 @@
 <resources>
     <string name="app_name">apkersan2</string>
 
-    <string-array name="jenis_kekerasan">
-        <item>Anak</item>
+    <string-array name="jenis_kasus">
+        <item>KDRT</item>
+        <item>Kekerasan Terhadap Anak</item>
+        <item>Kekerasan Terhadap Perempuan</item>
+        <item>Perdagangan Orang</item>
+        <item>Tenaga Kerja</item>
+    </string-array>
+
+    <string-array name="bentuk_kekerasan">
         <item>Fisik</item>
-        <item>Rumah Tangga</item>
+        <item>Psikis</item>
         <item>Seksual</item>
-        <item>Verbal</item>
+        <item>Penelantaran</item>
+        <item>Perdagangan Orang</item>
+        <item>Eksploitasi</item>
+        <item>Cyber Harassment</item>
+    </string-array>
+
+    <string-array name="pendidikan">
+        <item>Tidak Sekolah</item>
+        <item>Pra Sekolah</item>
+        <item>SD</item>
+        <item>SLTP</item>
+        <item>SLTA</item>
+        <item>Perguruan Tinggi</item>
+    </string-array>
+
+    <string-array name="status_kawin">
+        <item>Belum Kawin</item>
+        <item>Kawin</item>
+        <item>Cerai</item>
+    </string-array>
+
+    <string-array name="tempat_kejadian">
+        <item>Rumah</item>
+        <item>Tempat Kerja</item>
+        <item>Tempat Umum</item>
+        <item>Sekolah</item>
     </string-array>
 
     <string name="tab_title">Data Korban</string>
 
+    <string name="map_key" translatable="false">
+        AIzaSyAG9dYQQYrBr_IlaV-ZuDL3X4gXYoScCeA
+    </string>
+    <string name="title_activity_maps">Map</string>
 </resources>

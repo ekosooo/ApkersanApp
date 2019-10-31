@@ -3,7 +3,6 @@ package com.example.apkersan2.fragment;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -40,7 +39,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class IsiLaporanFragment extends Fragment implements Step {
+public class DataPelengkapFragment extends Fragment implements Step {
     View v;
 
     private DatePickerDialog datePickerDialog;
@@ -54,7 +53,7 @@ public class IsiLaporanFragment extends Fragment implements Step {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v =  inflater.inflate(R.layout.isilaporan_fragment, container, false);
+        v = inflater.inflate(R.layout.datapelengkap_fragment, container, false);
 
         dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         EtDateResult = v.findViewById(R.id.EtTglKejadian);
@@ -62,6 +61,8 @@ public class IsiLaporanFragment extends Fragment implements Step {
 
         TvUnggah    = v.findViewById(R.id.TvUnggah);
         IvBukti     = v.findViewById(R.id.IvBuktiKekerasan);
+
+        requestMultiplePermission();
 
         TvUnggah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +97,7 @@ public class IsiLaporanFragment extends Fragment implements Step {
 
     }
 
-    private void showDialogDate(){
+        private void showDialogDate(){
 
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
@@ -163,8 +164,8 @@ public class IsiLaporanFragment extends Fragment implements Step {
             }
         } else if (requestCode == CAMERA){
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-
             IvBukti.setImageBitmap(bitmap);
+            IvBukti.setVisibility(View.VISIBLE);
         }
     }
 
@@ -203,4 +204,5 @@ public class IsiLaporanFragment extends Fragment implements Step {
                 .onSameThread()
                 .check();
     }
+
 }

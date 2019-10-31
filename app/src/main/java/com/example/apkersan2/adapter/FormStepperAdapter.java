@@ -7,10 +7,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.apkersan2.R;
+import com.example.apkersan2.fragment.DataPelengkapFragment;
+import com.example.apkersan2.fragment.DataUmumFragment;
 import com.example.apkersan2.fragment.DataKorbanFragment;
-import com.example.apkersan2.fragment.IsiLaporanFragment;
 import com.example.apkersan2.fragment.KonfirmasiFragment;
+import com.example.apkersan2.fragment.MapsFragment;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
 import com.stepstone.stepper.viewmodel.StepViewModel;
@@ -34,14 +35,22 @@ public class FormStepperAdapter  extends AbstractFragmentStepAdapter {
 
         switch (position){
             case 0:
+                final DataUmumFragment dataUmumFragment = new DataUmumFragment();
+                step = dataUmumFragment;
+                break;
+            case 1:
                 final DataKorbanFragment dataKorbanFragment = new DataKorbanFragment();
                 step = dataKorbanFragment;
                 break;
-            case 1:
-                final IsiLaporanFragment isiLaporanFragment = new IsiLaporanFragment();
-                step = isiLaporanFragment;
-                break;
             case 2:
+                final MapsFragment mapsFragment = new MapsFragment();
+                step = mapsFragment;
+                break;
+            case 3:
+                final DataPelengkapFragment dataPelengkapFragment = new DataPelengkapFragment();
+                step = dataPelengkapFragment;
+                break;
+            case 4:
                 final KonfirmasiFragment konfirmasiFragment = new KonfirmasiFragment();
                 step = konfirmasiFragment;
 
@@ -55,7 +64,7 @@ public class FormStepperAdapter  extends AbstractFragmentStepAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 5;
     }
 
     @NonNull

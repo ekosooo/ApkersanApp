@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/putih"
+    android:id="@+id/IsiLaporan"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="30dp">
+
+                <TextView
+                    android:id="@+id/TvDataKorban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Pelengkap"
+                    android:textColor="@color/hitam"
+                    android:textSize="18sp"
+                    fontPath="font/SFProDisplay-Bold.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <View
+                    android:layout_marginTop="4dp"
+                    android:layout_width="125dp"
+                    android:layout_height="2dp"
+                    android:background="@color/hijauflat"/>
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Kejadian"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/styleinput"
+                    android:textColor="@color/hitam"
+                    android:textSize="14dp"
+                    android:hint="Lorem ipsum..."
+                    android:gravity="top"
+                    android:padding="10dp"
+                    android:inputType="text|textMultiLine"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"
+                    />
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tempat Kejadian"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/tempat_kejadian"
+                    android:background="@drawable/styleinput"
+                    android:paddingLeft="-10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="14sp"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Waktu Kejadian"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/EtTglKejadian"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/styleinput"
+                        android:textColor="@color/hitam"
+                        android:hint="1997-10-25"
+                        android:textSize="14dp"
+                        android:padding="10dp"
+                        android:focusable="false"
+                        fontPath="font/SFProDisplay-Regular.ttf"
+                        tools:ignore="MissingPrefix"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ic_calendar"
+                        android:paddingRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_calendar"
+                        android:layout_gravity="right|center_vertical"
+                        />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kronologi Kejadian"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/styleinput"
+                    android:textColor="@color/hitam"
+                    android:textSize="14dp"
+                    android:hint="Tulis laporan anda"
+                    android:gravity="top"
+                    android:padding="10dp"
+                    android:inputType="text|textMultiLine"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@drawable/styleinput"/>
+
+            <TextView
+                android:id="@+id/TvUnggah"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Unggah Bukti Kekerasan"
+                android:drawableLeft="@drawable/ic_upload"
+                android:drawablePadding="20dp"
+                android:textSize="14sp"
+                fontPath="font/SFProDisplay-Regular.ttf"
+                tools:ignore="MissingPrefix"/>
+
+            <ImageView
+                android:id="@+id/IvBuktiKekerasan"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:visibility="gone">
+
+            </ImageView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@drawable/styleinput"/>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>

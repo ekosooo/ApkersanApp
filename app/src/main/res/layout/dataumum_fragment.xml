@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/putih"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/TvDataKorban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Umum"
+        android:textColor="@color/hitam"
+        android:textSize="18sp"
+        fontPath="font/SFProDisplay-Bold.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <View
+        android:layout_marginTop="4dp"
+        android:layout_width="100dp"
+        android:layout_height="2dp"
+        android:background="@color/hijauflat"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Tiket"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:id="@+id/EtTiket"
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/styleinput"
+        android:textColor="@color/hitam"
+        android:hint="TCK-0001"
+        android:textSize="14dp"
+        android:padding="10dp"
+        android:inputType="number"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status Pelapor"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/hijauflat"
+            android:background="@drawable/radio_button_status"
+            android:paddingRight="20dp"
+            android:text="Saksi"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix"/>
+
+        <RadioButton
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Korban"
+            android:layout_marginLeft="20dp"
+            android:buttonTint="@color/hijauflat"
+            android:background="@drawable/radio_button_status"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jenis Kasus"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/jenis_kasus"
+        android:background="@drawable/styleinput"
+        android:paddingLeft="-10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textSize="14sp"
+        tools:ignore="MissingPrefix"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi Kasus"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/styleinput"
+        android:textColor="@color/hitam"
+        android:gravity="top"
+        android:textSize="14dp"
+        android:padding="10dp"
+        android:focusable="false"
+        android:inputType="text|textMultiLine"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bentuk Kekerasan"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/bentuk_kekerasan"
+        android:background="@drawable/styleinput"
+        android:paddingLeft="-10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textSize="14sp"
+        tools:ignore="MissingPrefix"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi Kekerasan"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/styleinput"
+        android:textColor="@color/hitam"
+        android:gravity="top"
+        android:textSize="14dp"
+        android:padding="10dp"
+        android:focusable="false"
+        android:inputType="text|textMultiLine"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+
+</LinearLayout>
