@@ -21,7 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -31,9 +30,10 @@
         <activity android:name=".BuatActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".DataPelengkapActivity" />
+        <activity android:name=".KonfirmasiActivity"></activity>
         <activity android:name=".DataKorbanActivity" />
-        <activity android:name=".DataUmumActivity" />
-        <activity android:name=".DataPelengkapActivity">
+        <activity android:name=".DataUmumActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

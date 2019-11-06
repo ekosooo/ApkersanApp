@@ -14,11 +14,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -40,26 +44,37 @@ public class DataPelengkapActivity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
-    private EditText EtDateResult, EtAlamat;
+    private EditText EtDateResult, EtAlamat, EtKronologi, EtWaktu;
     private ImageView BtDatePicker, IvBukti;
+    private VideoView VvBukti;
     private TextView TvUnggah;
+    private Spinner SpTempat;
+    private Button BtNextPelengkap;
 
     private String tiketExtra, statusExtra, jenisExtra, bentukExtra, namaExtra, jeniskelaminExtra, disabilitasExtra, usiaExtra,
             pendidikanExtra, bekerjaExtra, statuskawinExtra;
     private String alamatExtra;
     private Double latExtra, lngExtra;
-    private int GALLERY = 1, CAMERA = 2, OTHER = 3;
+    private int GALLERY = 1, CAMERA = 2, VIDEO = 3, AUDIO = 4;
+
+    private Uri contentURI;
+    private Bitmap gambar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_pelengkap);
 
+        BtNextPelengkap = (Button) findViewById(R.id.BtNextPelengkap);
         dateFormatter   = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         EtDateResult    = (EditText) findViewById(R.id.EtTglKejadian);
         BtDatePicker    = (ImageView) findViewById(R.id.IvKalender);
         IvBukti         = (ImageView) findViewById(R.id.IvBuktiKekerasan);
+        VvBukti         = (VideoView) findViewById(R.id.VvBuktiKekerasan);
         TvUnggah        = (TextView) findViewById(R.id.TvUnggah);
+
+        EtKronologi     = (EditText) findViewById(R.id.EtKronologi);
+        SpTempat        = (Spinner) findViewById(R.id.SpTempat);
         EtAlamat        = (EditText) findViewById(R.id.EtAlamatKejadian);
 
         //mengambildatadariputextra
@@ -88,6 +103,37 @@ public class DataPelengkapActivity extends AppCompatActivity {
 
         requestMultiplePermission();
 
+        BtNextPelengkap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DataPelengkapActivity.this, KonfirmasiActivity.class);
+
+                //kirim extra
+                intent.putExtra("tiket", tiketExtra);
+                intent.putExtra("status", statusExtra);
+                intent.putExtra("jenis", jenisExtra);
+                intent.putExtra("bentuk", bentukExtra);
+
+                intent.putExtra("nama", namaExtra);
+                intent.putExtra("jeniskelamin", jeniskelaminExtra);
+                intent.putExtra("disabilitas", disabilitasExtra);
+                intent.putExtra("usia", usiaExtra);
+                intent.putExtra("pendidikan", pendidikanExtra);
+                intent.putExtra("bekerja", bekerjaExtra);
+                intent.putExtra("statuskawin", statuskawinExtra);
+
+                intent.putExtra("kronologi", EtKronologi.getText().toString());
+                intent.putExtra("alamat", EtAlamat.getText().toString());
+                intent.putExtra("tempat", SpTempat.getSelectedItem().toString());
+                intent.putExtra("waktu", EtDateResult.getText().toString());
+
+                intent.putExtra("lat", latExtra);
+                intent.putExtra("lng", lngExtra);
+
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
         TvUnggah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +169,8 @@ public class DataPelengkapActivity extends AppCompatActivity {
         String[] pictureDialogItems = {
                 "Galeri",
                 "Kamera",
-                "Lainnya"
+                "Video",
+                "Rekaman Suara"
         };
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {
@@ -137,7 +184,10 @@ public class DataPelengkapActivity extends AppCompatActivity {
                                 takePhotoFromCamera();
                                 break;
                             case 2:
-                                takeAll();
+                                chooseVideoFromGallary();
+                                break;
+                            case 3:
+                                chooseAudio();
                                 break;
                         }
                     }
@@ -145,17 +195,22 @@ public class DataPelengkapActivity extends AppCompatActivity {
         pictureDialog.show();
     }
 
-    private void takeAll() {
+    private void chooseAudio() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        Uri uri = Uri.parse("*/*"); // a directory
-        intent.setDataAndType(uri, "*/*");
-        startActivity(Intent.createChooser(intent, "Open"));
+        intent.setType("audio/*");
+        startActivityForResult(intent, AUDIO);
     }
 
     public void choosePhotoFromGallary(){
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(galleryIntent, GALLERY);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("images/*");
+        startActivityForResult(intent, GALLERY);
+    }
+
+    public void chooseVideoFromGallary(){
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("video/*");
+        startActivityForResult(intent, VIDEO);
     }
 
     public void takePhotoFromCamera(){
@@ -172,17 +227,35 @@ public class DataPelengkapActivity extends AppCompatActivity {
         if (requestCode == GALLERY && data != null){
             Uri contentURI = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), contentURI);
-                IvBukti.setImageBitmap(bitmap);
+                gambar = MediaStore.Images.Media.getBitmap(getContentResolver(), contentURI);
+                IvBukti.setImageBitmap(gambar);
                 IvBukti.setVisibility(View.VISIBLE);
+                VvBukti.setVisibility(View.GONE);
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(DataPelengkapActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
             }
-        } else if (requestCode == CAMERA){
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            IvBukti.setImageBitmap(bitmap);
+        }else if (requestCode == VIDEO && data != null){
+            contentURI = data.getData();
+            VvBukti.setVisibility(View.VISIBLE);
+            IvBukti.setVisibility(View.GONE);
+            VvBukti.setVideoURI(contentURI);
+            VvBukti.setMediaController(new MediaController(this));
+            VvBukti.start();
+        }
+        else if (requestCode == AUDIO && data != null){
+            contentURI = data.getData();
+            VvBukti.setVisibility(View.VISIBLE);
+            IvBukti.setVisibility(View.GONE);
+            VvBukti.setVideoURI(contentURI);
+            VvBukti.setMediaController(new MediaController(this));
+            VvBukti.start();
+        }
+        else if (requestCode == CAMERA){
+            gambar = (Bitmap) data.getExtras().get("data");
+            IvBukti.setImageBitmap(gambar);
             IvBukti.setVisibility(View.VISIBLE);
+            VvBukti.setVisibility(View.GONE);
         }
     }
 
