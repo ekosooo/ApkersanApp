@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/putih</item>
     </style>
 
     <style name="Progress_bar">
@@ -13,6 +13,15 @@
         <item name="ms_activeStepColor">@color/putih</item>
         <item name="ms_inactiveStepColor">@color/colorPrimaryDark</item>
         <item name="ms_bottomNavigationBackground">@color/hijauflat</item>
+    </style>
+
+    <style name="my_progressbar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressBackgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:progress">@color/putih</item>
+    </style>
+
+    <style name="CostumActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
     </style>
 
 </resources>

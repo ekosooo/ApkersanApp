@@ -1,29 +1,29 @@
 package com.example.apkersan2.fragment;
 
-import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.apkersan2.R;
+import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.Step;
+import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.Random;
 
 
-public class DataUmumFragment extends Fragment implements Step {
+public class DataUmumFragment extends Fragment implements Step, BlockingStep {
     View v;
 
     private EditText EtTiket;
@@ -41,6 +41,7 @@ public class DataUmumFragment extends Fragment implements Step {
         return v;
     }
 
+
     @Nullable
     @Override
     public VerificationError verifyStep() {
@@ -57,4 +58,25 @@ public class DataUmumFragment extends Fragment implements Step {
 
     }
 
+    @Override
+    public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
+
+//        DataKorbanFragment dataKorbanFragment = new DataKorbanFragment();
+//        FragmentManager fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager
+//                .beginTransaction()
+//                .replace(R.id.Frame_layout, dataKorbanFragment, DataKorbanFragment.class.getSimpleName());
+//        fragmentTransaction.addToBackStack(null).commit();
+
+    }
+
+    @Override
+    public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
+
+    }
+
+    @Override
+    public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
+
+    }
 }

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:paddingRight="30dp"
+    android:paddingLeft="30dp"
+    android:background="@color/putih"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textSize="36dp"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Bold.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Silahkan masukkan data diri anda."
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        android:backgroundTint="@color/hijauflat"
+        android:inputType="text"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jenis Kelamin"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <RadioGroup
+        android:id="@+id/RG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_marginTop="3dp"
+            android:id="@+id/RLaki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/hijauflat"
+            android:checked="true"
+            android:textColor="@color/hitam"
+            android:paddingRight="20dp"
+            android:background="@drawable/radio_button_status"
+            android:text="Laki-Laki"
+            fontPath="font/SFProDisplay-Medium.ttf"
+            tools:ignore="MissingPrefix"/>
+
+        <RadioButton
+            android:layout_marginTop="3dp"
+            android:id="@+id/RPerempuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perempuan"
+            android:background="@drawable/radio_button_status"
+            android:textColor="@color/hitam"
+            android:layout_marginLeft="20dp"
+            android:buttonTint="@color/hijauflat"
+            fontPath="font/SFProDisplay-Medium.ttf"
+            tools:ignore="MissingPrefix"
+            />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/hitam"
+        android:backgroundTint="@color/hijauflat"
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/hitam"
+        android:backgroundTint="@color/hijauflat"
+        android:inputType="textPassword"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alamat"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/hitam"
+        android:backgroundTint="@color/hijauflat"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Telepon"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:textColor="@color/hitam"
+            android:backgroundTint="@color/hijauflat"
+            android:textSize="14sp"
+            android:text="+62"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@color/hitam"
+            android:hint="8999327717"
+            android:backgroundTint="@color/hijauflat"
+            android:textSize="15sp"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_buttonwarna"
+        android:textColor="@color/putih"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+</LinearLayout>
+

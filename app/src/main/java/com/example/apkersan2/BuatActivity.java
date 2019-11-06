@@ -12,9 +12,10 @@ import com.stepstone.stepper.VerificationError;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class BuatActivity extends AppCompatActivity implements StepperLayout.StepperListener {
+public class BuatActivity extends AppCompatActivity implements StepperLayout.StepperListener{
 
     private StepperLayout mStepperLayout;
+    private String data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,4 +52,7 @@ public class BuatActivity extends AppCompatActivity implements StepperLayout.Ste
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
+
+
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:background="@color/putih"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign in"
+        android:textSize="36dp"
+        android:textColor="@color/hitam"
+        fontPath="font/SFProDisplay-Bold.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Silahkan login dengan akun anda."
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/styleinput"
+        android:textColor="@color/hitam"
+        android:hint="Email"
+        android:textSize="14dp"
+        android:padding="10dp"
+        android:inputType="textEmailAddress"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/EtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/styleinput"
+            android:textColor="@color/hitam"
+            android:hint="Password"
+            android:textSize="14dp"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            fontPath="font/SFProDisplay-Medium.ttf"
+            tools:ignore="MissingPrefix"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/IvShow"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_eye"/>
+
+            <ImageView
+                android:id="@+id/IvHide"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_blind"
+                android:visibility="invisible"/>
+
+        </FrameLayout>
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_buttonwarna"
+        android:textColor="@color/putih"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <LinearLayout
+        android:paddingTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum punya akun ?"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix"/>
+
+        <TextView
+            android:id="@+id/TvDaftar"
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daftar"
+            android:textColor="@color/hijauflat"
+            fontPath="font/SFProDisplay-Medium.ttf"
+            tools:ignore="MissingPrefix"/>
+
+    </LinearLayout>
+
+</LinearLayout>

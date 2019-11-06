@@ -6,11 +6,13 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +44,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private TextView resultText;
     private Button BtnLokasi;
 
+    private String tiketExtra, statusExtra, jenisExtra, bentukExtra, namaExtra, jeniskelaminExtra, disabilitasExtra, usiaExtra,
+            pendidikanExtra, bekerjaExtra, statuskawinExtra;
     private String locality;
     private Double lat, lng;
 
@@ -53,6 +57,50 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         resultText = (TextView) findViewById(R.id.result);
         BtnLokasi  = (Button)   findViewById(R.id.BtnLokasi);
 
+        Bundle extra = getIntent().getExtras();
+        if (extra != null){
+
+            tiketExtra          = extra.getString("tiket");
+            statusExtra         = extra.getString("status");
+            jenisExtra          = extra.getString("jenis");
+            bentukExtra         = extra.getString("bentuk");
+
+            namaExtra           = extra.getString("nama");
+            jeniskelaminExtra   = extra.getString("jeniskelamin");
+            disabilitasExtra    = extra.getString("disabilitas");
+            usiaExtra           = extra.getString("usia");
+            pendidikanExtra     = extra.getString("pendidikan");
+            bekerjaExtra        = extra.getString("bekerja");
+            statuskawinExtra    = extra.getString("statuskawin");
+
+        }
+
+        BtnLokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapActivity.this, DataPelengkapActivity.class);
+
+                intent.putExtra("tiket", tiketExtra);
+                intent.putExtra("status", statusExtra);
+                intent.putExtra("jenis", jenisExtra);
+                intent.putExtra("bentuk", bentukExtra);
+
+                intent.putExtra("nama", namaExtra);
+                intent.putExtra("jeniskelamin", jeniskelaminExtra);
+                intent.putExtra("disabilitas", disabilitasExtra);
+                intent.putExtra("usia", usiaExtra);
+                intent.putExtra("pendidikan", pendidikanExtra);
+                intent.putExtra("bekerja", bekerjaExtra);
+                intent.putExtra("statuskawin", statuskawinExtra);
+
+                intent.putExtra("alamat", locality);
+                intent.putExtra("lat", lat);
+                intent.putExtra("long", lng);
+
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         GetLastLocation();
@@ -117,7 +165,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         LatLng latLng = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;

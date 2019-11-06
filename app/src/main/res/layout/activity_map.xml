@@ -39,12 +39,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pilih Lokasi"
-                android:textSize="20sp"
+                android:text="Pilih lokasi kejadian"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 fontPath="font/SFProDisplay-Bold.ttf"
-                tools:ignore="MissingPrefix"
-                />
+                tools:ignore="MissingPrefix"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -53,11 +52,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
                     android:src="@drawable/ic_pin_hint">
                 </ImageView>
 

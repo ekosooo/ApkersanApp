@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.apkersan2">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -22,13 +21,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity android:name=".MapActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".BuatActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".DataKorbanActivity" />
+        <activity android:name=".DataUmumActivity" />
+        <activity android:name=".DataPelengkapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

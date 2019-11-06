@@ -14,6 +14,7 @@ import com.example.apkersan2.fragment.KonfirmasiFragment;
 import com.example.apkersan2.fragment.MapsFragment;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
+import com.stepstone.stepper.internal.widget.StepViewPager;
 import com.stepstone.stepper.viewmodel.StepViewModel;
 
 import java.util.ArrayList;
@@ -29,7 +30,6 @@ public class FormStepperAdapter  extends AbstractFragmentStepAdapter {
 
     @Override
     public Step createStep(int position) {
-
 
         Step step = null;
 
@@ -72,11 +72,6 @@ public class FormStepperAdapter  extends AbstractFragmentStepAdapter {
     public StepViewModel getViewModel(@IntRange(from = 0) int position) {
         StepViewModel.Builder builder = new StepViewModel.Builder(context);
 
-//        //Override this method to set Step title for the Tabs, not necessary for other stepper types
-//        return new StepViewModel.Builder(context)
-//                .setTitle(R.string.tab_title) //can be a CharSequence instead
-//                .create();
-
         switch (position){
             case 0:
                 builder.setTitle("Step 1");
@@ -91,4 +86,5 @@ public class FormStepperAdapter  extends AbstractFragmentStepAdapter {
         }
         return builder.create();
     }
+
 }
