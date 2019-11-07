@@ -54,23 +54,33 @@
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
 
-                <ImageView
-                    android:id="@+id/IvBuktiKekerasan"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="30dp"
+                <FrameLayout
+                    android:id="@+id/FrameLayar"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
-                    android:visibility="gone"/>
-
-                <VideoView
-                    android:id="@+id/VvBuktiKekerasan"
+                    android:visibility="gone"
                     android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="160dp"
-                    android:layout_marginTop="10dp"
-                    android:visibility="gone"/>
+                    android:background="@color/hitam">
+
+                    <ImageView
+                        android:id="@+id/IvBuktiKekerasan"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:visibility="gone"/>
+
+                    <VideoView
+                        android:id="@+id/VvBuktiKekerasan"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"/>
+
+                </FrameLayout>
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -206,7 +216,7 @@
             android:gravity="center_vertical">
 
             <Button
-                android:id="@+id/BtBackKorban"
+                android:id="@+id/BtBackPelengkap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"

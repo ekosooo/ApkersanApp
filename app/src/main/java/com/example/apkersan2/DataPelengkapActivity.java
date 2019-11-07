@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.Spinner;
@@ -32,6 +33,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,7 +51,8 @@ public class DataPelengkapActivity extends AppCompatActivity {
     private VideoView VvBukti;
     private TextView TvUnggah;
     private Spinner SpTempat;
-    private Button BtNextPelengkap;
+    private Button BtNextPelengkap, BtBackPelengkap;
+    private FrameLayout FrLatarHitam;
 
     private String tiketExtra, statusExtra, jenisExtra, bentukExtra, namaExtra, jeniskelaminExtra, disabilitasExtra, usiaExtra,
             pendidikanExtra, bekerjaExtra, statuskawinExtra;
@@ -57,7 +60,7 @@ public class DataPelengkapActivity extends AppCompatActivity {
     private Double latExtra, lngExtra;
     private int GALLERY = 1, CAMERA = 2, VIDEO = 3, AUDIO = 4;
 
-    private Uri contentURI;
+    private Uri video, audio;
     private Bitmap gambar;
 
     @Override
@@ -66,6 +69,9 @@ public class DataPelengkapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_pelengkap);
 
         BtNextPelengkap = (Button) findViewById(R.id.BtNextPelengkap);
+        BtBackPelengkap = (Button) findViewById(R.id.BtBackPelengkap);
+        FrLatarHitam    = (FrameLayout) findViewById(R.id.FrameLayar);
+
         dateFormatter   = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         EtDateResult    = (EditText) findViewById(R.id.EtTglKejadian);
         BtDatePicker    = (ImageView) findViewById(R.id.IvKalender);
@@ -103,6 +109,15 @@ public class DataPelengkapActivity extends AppCompatActivity {
 
         requestMultiplePermission();
 
+        BtBackPelengkap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DataPelengkapActivity.this, DataUmumActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+
         BtNextPelengkap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +144,17 @@ public class DataPelengkapActivity extends AppCompatActivity {
 
                 intent.putExtra("lat", latExtra);
                 intent.putExtra("lng", lngExtra);
+
+                if (gambar != null){
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    gambar.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+                    byte[] imgByte = byteArrayOutputStream.toByteArray();
+                    intent.putExtra("gambar", imgByte);
+                }else if (video != null){
+                    intent.putExtra("video", video);
+                }else if (audio != null){
+                    intent.putExtra("audio", audio);
+                }
 
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -203,7 +229,7 @@ public class DataPelengkapActivity extends AppCompatActivity {
 
     public void choosePhotoFromGallary(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("images/*");
+        intent.setType("image/*");
         startActivityForResult(intent, GALLERY);
     }
 
@@ -231,23 +257,26 @@ public class DataPelengkapActivity extends AppCompatActivity {
                 IvBukti.setImageBitmap(gambar);
                 IvBukti.setVisibility(View.VISIBLE);
                 VvBukti.setVisibility(View.GONE);
+                FrLatarHitam.setVisibility(View.VISIBLE);
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(DataPelengkapActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
             }
         }else if (requestCode == VIDEO && data != null){
-            contentURI = data.getData();
+            video = data.getData();
             VvBukti.setVisibility(View.VISIBLE);
             IvBukti.setVisibility(View.GONE);
-            VvBukti.setVideoURI(contentURI);
+            FrLatarHitam.setVisibility(View.VISIBLE);
+            VvBukti.setVideoURI(video);
             VvBukti.setMediaController(new MediaController(this));
             VvBukti.start();
         }
         else if (requestCode == AUDIO && data != null){
-            contentURI = data.getData();
+            audio = data.getData();
             VvBukti.setVisibility(View.VISIBLE);
             IvBukti.setVisibility(View.GONE);
-            VvBukti.setVideoURI(contentURI);
+            FrLatarHitam.setVisibility(View.VISIBLE);
+            VvBukti.setVideoURI(audio);
             VvBukti.setMediaController(new MediaController(this));
             VvBukti.start();
         }
@@ -256,6 +285,7 @@ public class DataPelengkapActivity extends AppCompatActivity {
             IvBukti.setImageBitmap(gambar);
             IvBukti.setVisibility(View.VISIBLE);
             VvBukti.setVisibility(View.GONE);
+            FrLatarHitam.setVisibility(View.VISIBLE);
         }
     }
 
