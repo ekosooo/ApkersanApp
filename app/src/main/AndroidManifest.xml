@@ -27,7 +27,6 @@
 
         <activity android:name=".MapActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".BuatActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".DataPelengkapActivity" />

@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
         BtBuat = (Button) findViewById(R.id.BtnBuat);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btm_nav);
 
-        BtBuat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BuatActivity.class);
-                startActivity(intent);
-            }
-        });
+//        BtBuat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, BuatActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.action_buat :
-                        in = new Intent(getBaseContext(), BuatActivity.class);
-                        startActivity(in);
-                        overridePendingTransition(0, 0);
+//                        in = new Intent(getBaseContext(), BuatActivity.class);
+//                        startActivity(in);
+//                        overridePendingTransition(0, 0);
                         break;
                     case R.id.action_bantuan:
                         Toast.makeText(MainActivity.this, "Bantuan clicked", Toast.LENGTH_SHORT).show();

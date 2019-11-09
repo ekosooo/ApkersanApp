@@ -158,13 +158,14 @@
             android:id="@+id/SpBentukKekerasan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/bentuk_kekerasan"
             android:background="@drawable/styleinput"
             android:paddingLeft="-10dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="14sp"
             tools:ignore="MissingPrefix"/>
+
+<!--        android:entries="@array/bentuk_kekerasan"-->
 
         <TextView
             android:layout_marginTop="10dp"
@@ -176,6 +177,7 @@
             tools:ignore="MissingPrefix"/>
 
         <EditText
+            android:id="@+id/EtDeskripsiKekerasan"
             android:layout_marginTop="2dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
