@@ -55,7 +55,7 @@ public class DataPelengkapActivity extends AppCompatActivity {
     private FrameLayout FrLatarHitam;
 
     private String tiketExtra, statusExtra, jenisExtra, bentukExtra, namaExtra, jeniskelaminExtra, disabilitasExtra, usiaExtra,
-            pendidikanExtra, bekerjaExtra, statuskawinExtra;
+            pendidikanExtra, bekerjaExtra, statuskawinExtra, KasusIdExtra, KekerasanIdExtra;
     private String alamatExtra;
     private Double latExtra, lngExtra;
     private int GALLERY = 1, CAMERA = 2, VIDEO = 3, AUDIO = 4;
@@ -91,6 +91,8 @@ public class DataPelengkapActivity extends AppCompatActivity {
             statusExtra         = extra.getString("status");
             jenisExtra          = extra.getString("jenis");
             bentukExtra         = extra.getString("bentuk");
+            KasusIdExtra        = extra.getString("kekerasanid");
+            KekerasanIdExtra    = extra.getString("kasusid");
 
             namaExtra           = extra.getString("nama");
             jeniskelaminExtra   = extra.getString("jeniskelamin");
@@ -128,6 +130,8 @@ public class DataPelengkapActivity extends AppCompatActivity {
                 intent.putExtra("status", statusExtra);
                 intent.putExtra("jenis", jenisExtra);
                 intent.putExtra("bentuk", bentukExtra);
+                intent.putExtra("kekerasanid", KekerasanIdExtra);
+                intent.putExtra("kasusid", KasusIdExtra);
 
                 intent.putExtra("nama", namaExtra);
                 intent.putExtra("jeniskelamin", jeniskelaminExtra);

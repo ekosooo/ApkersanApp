@@ -5,28 +5,44 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseKekerasan {
+public class ResponseKekerasan{
 
-    @SerializedName("error")
-    private String error;
-    @SerializedName("data")
-    @Expose
-    private List<Value> data = null;
+	@SerializedName("kekerasan_deksripsi")
+	@Expose
+	private String kekerasanDeksripsi;
 
-    public List<Value> getData() {
-        return data;
-    }
+	@SerializedName("data")
+	@Expose
+	private List<DataKekerasan> data = null;
 
-    public String getEror(){
-        return error;
-    }
+	public List<DataKekerasan> getData() {
+		return data;
+	}
 
-    public void setError(String error) {
-        this.error = error;
-    }
+	public String getKekerasanDeksripsi() {
+		return kekerasanDeksripsi;
+	}
 
-    public void setData(List<Value> data) {
-        this.data = data;
-    }
+	public void setData(List<DataKekerasan> data) {
+		this.data = data;
+	}
+
+
+//	private List<DataKekerasan> data;
+//
+//	public void setData(List<DataKekerasan> data){
+//		this.data = data;
+//	}
+//
+//	public List<DataKekerasan> getData(){
+//		return data;
+//	}
+//
+//	@Override
+// 	public String toString(){
+//		return
+//			"ResponseKekerasan{" +
+//			"data = '" + data + '\'' +
+//			"}";
+//		}
 }
-

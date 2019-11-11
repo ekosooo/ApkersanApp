@@ -34,44 +34,44 @@
         android:layout_height="wrap_content"
         android:text="Nama"
         android:textSize="14sp"
-        android:textColor="@color/hitam"
         fontPath="font/SFProDisplay-Medium.ttf"
         tools:ignore="MissingPrefix"/>
 
     <EditText
+        android:id="@+id/EtRegNama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textColor="@color/hitam"
-        android:backgroundTint="@color/hijauflat"
+        android:background="@drawable/styleinput"
+        android:padding="10dp"
         android:inputType="text"
         fontPath="font/SFProDisplay-Regular.ttf"
         tools:ignore="MissingPrefix"
         />
 
     <TextView
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Jenis Kelamin"
         android:textSize="14sp"
-        android:textColor="@color/hitam"
         fontPath="font/SFProDisplay-Medium.ttf"
         tools:ignore="MissingPrefix"/>
 
     <RadioGroup
-        android:id="@+id/RG"
+        android:id="@+id/RgRegJk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/RbRegLaki"
             android:layout_marginTop="3dp"
-            android:id="@+id/RLaki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/hijauflat"
             android:checked="true"
-            android:textColor="@color/hitam"
             android:paddingRight="20dp"
             android:background="@drawable/radio_button_status"
             android:text="Laki-Laki"
@@ -79,13 +79,12 @@
             tools:ignore="MissingPrefix"/>
 
         <RadioButton
+            android:id="@+id/RbRegPerempuan"
             android:layout_marginTop="3dp"
-            android:id="@+id/RPerempuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Perempuan"
             android:background="@drawable/radio_button_status"
-            android:textColor="@color/hitam"
             android:layout_marginLeft="20dp"
             android:buttonTint="@color/hijauflat"
             fontPath="font/SFProDisplay-Medium.ttf"
@@ -94,72 +93,77 @@
     </RadioGroup>
 
     <TextView
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Email"
         android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/hitam"
         fontPath="font/SFProDisplay-Medium.ttf"
         tools:ignore="MissingPrefix"/>
 
     <EditText
+        android:id="@+id/EtRegEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/hitam"
-        android:backgroundTint="@color/hijauflat"
-        android:inputType="textEmailAddress"
         android:textSize="14sp"
+        android:textColor="@color/hitam"
+        android:background="@drawable/styleinput"
+        android:padding="10dp"
+        android:inputType="text"
         fontPath="font/SFProDisplay-Regular.ttf"
         tools:ignore="MissingPrefix"
         />
 
     <TextView
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Password"
         android:textSize="14sp"
-        android:textColor="@color/hitam"
         fontPath="font/SFProDisplay-Medium.ttf"
         tools:ignore="MissingPrefix"/>
 
     <EditText
+        android:id="@+id/EtRegPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/hitam"
-        android:backgroundTint="@color/hijauflat"
-        android:inputType="textPassword"
         android:textSize="14sp"
+        android:textColor="@color/hitam"
+        android:background="@drawable/styleinput"
+        android:padding="10dp"
+        android:inputType="textPassword"
         fontPath="font/SFProDisplay-Regular.ttf"
         tools:ignore="MissingPrefix"
         />
 
     <TextView
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Alamat"
         android:textSize="14sp"
-        android:textColor="@color/hitam"
         fontPath="font/SFProDisplay-Medium.ttf"
         tools:ignore="MissingPrefix"/>
 
     <EditText
+        android:id="@+id/EtRegAlamat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/hitam"
-        android:backgroundTint="@color/hijauflat"
-        android:inputType="textMultiLine"
         android:textSize="14sp"
+        android:textColor="@color/hitam"
+        android:background="@drawable/styleinput"
+        android:padding="10dp"
+        android:inputType="textMultiLine"
         fontPath="font/SFProDisplay-Regular.ttf"
         tools:ignore="MissingPrefix"
         />
 
     <TextView
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Telepon"
         android:textSize="14sp"
-        android:textColor="@color/hitam"
         fontPath="font/SFProDisplay-Medium.ttf"
         tools:ignore="MissingPrefix"/>
 
@@ -169,24 +173,30 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/EtIND"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:textColor="@color/hitam"
-            android:backgroundTint="@color/hijauflat"
             android:textSize="14sp"
+            android:textColor="@color/hitam"
+            android:background="@drawable/styleinput"
+            android:padding="10dp"
+            android:inputType="text"
             android:text="+62"
             fontPath="font/SFProDisplay-Regular.ttf"
             tools:ignore="MissingPrefix"/>
 
         <EditText
+            android:id="@+id/EtRegTlp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:textColor="@color/hitam"
-            android:hint="8999327717"
-            android:backgroundTint="@color/hijauflat"
-            android:textSize="15sp"
+            android:background="@drawable/styleinput"
+            android:padding="10dp"
+            android:hint="8134500xxxx"
+            android:layout_marginLeft="4dp"
+            android:inputType="number"
+            android:textSize="14sp"
             fontPath="font/SFProDisplay-Regular.ttf"
             tools:ignore="MissingPrefix"
             />
@@ -194,6 +204,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/BtRegister"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

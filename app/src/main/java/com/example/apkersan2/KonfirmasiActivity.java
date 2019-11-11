@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import org.w3c.dom.Text;
@@ -24,7 +25,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
     private TextView TvTiket, TvStatusPelapor, TvJenisKasus, TvBentukKekerasan, TvNama, TvJenisKelamin, TvDisabilitas,
             TvUsia, TvPendidikan, TvBekerja, TvStatusKawin, TvAlamat, TvKronologi, TvTempat, TvWaktu;
     private String tiketExtra, statusExtra, jenisExtra, bentukExtra, namaExtra, jeniskelaminExtra, disabilitasExtra, usiaExtra,
-            pendidikanExtra, bekerjaExtra, statuskawinExtra, alamatExtra, kronologiExtra, tempatExtra, waktuExtra;
+            pendidikanExtra, bekerjaExtra, statuskawinExtra, alamatExtra, kronologiExtra, tempatExtra, waktuExtra, KasusIdExtra, KekerasanIdExtra;
     private Bitmap gambarExtra;
     private Uri videoExtra, audioExtra;
     private Double latExtra, lngExtra;
@@ -65,6 +66,8 @@ public class KonfirmasiActivity extends AppCompatActivity {
             statusExtra         = extra.getString("status");
             jenisExtra          = extra.getString("jenis");
             bentukExtra         = extra.getString("bentuk");
+            KasusIdExtra        = extra.getString("kekerasanid");
+            KekerasanIdExtra    = extra.getString("kasusid");
 
             namaExtra           = extra.getString("nama");
             jeniskelaminExtra   = extra.getString("jeniskelamin");
@@ -81,6 +84,8 @@ public class KonfirmasiActivity extends AppCompatActivity {
             latExtra            = extra.getDouble("lat", 0);
             lngExtra            = extra.getDouble("long", 0);
         }
+
+        Toast.makeText(getApplicationContext(), KasusIdExtra+KekerasanIdExtra, Toast.LENGTH_SHORT).show();
 
         BtBackKonfirmasi.setOnClickListener(new View.OnClickListener() {
             @Override

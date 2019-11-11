@@ -18,7 +18,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class DataKorbanActivity extends AppCompatActivity {
 
     private Button BtBack, BtNext;
-    private String tiketExtra, statusExtra, jenisExtra, bentukExtra;
+    private String tiketExtra, statusExtra, jenisExtra, bentukExtra, KekerasanIdExtra, KasusIdExtra;
     private EditText EtNama, EtUsia;
     private RadioGroup RgJenisKelamin, RgDisabilitas, RgBekerja;
     private RadioButton RbLaki, RbPerempuan, RbYaDisabilitas, RbTidakDisabilitas, RbYaBekerja, RbTidakBekerja;
@@ -55,12 +55,13 @@ public class DataKorbanActivity extends AppCompatActivity {
             statusExtra     = extra.getString("status");
             jenisExtra      = extra.getString("jenis");
             bentukExtra     = extra.getString("bentuk");
+            KasusIdExtra    = extra.getString("kekerasanid");
+            KekerasanIdExtra= extra.getString("kasusid");
         }
 
         selectJenisKelamin  = RgJenisKelamin.getCheckedRadioButtonId();
         selectBekerja       = RgBekerja.getCheckedRadioButtonId();
         selectDisabilitas   = RgDisabilitas.getCheckedRadioButtonId();
-
 
         if (selectJenisKelamin == RbLaki.getId()){
             JenisKelamin = RbLaki.getText().toString();
@@ -99,6 +100,8 @@ public class DataKorbanActivity extends AppCompatActivity {
                 intent.putExtra("status", statusExtra);
                 intent.putExtra("jenis", jenisExtra);
                 intent.putExtra("bentuk", bentukExtra);
+                intent.putExtra("kekerasanid", KekerasanIdExtra);
+                intent.putExtra("kasusid", KasusIdExtra);
 
                 intent.putExtra("nama", EtNama.getText().toString());
                 intent.putExtra("jeniskelamin", JenisKelamin);
