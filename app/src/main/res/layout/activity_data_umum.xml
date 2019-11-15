@@ -118,6 +118,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="14sp"
+            fontPath="font/SFProDisplay-Regular.ttf"
             tools:ignore="MissingPrefix"/>
 
         <TextView
@@ -163,6 +164,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="14sp"
+            fontPath="font/SFProDisplay-Regular.ttf"
             tools:ignore="MissingPrefix"/>
 
 <!--        android:entries="@array/bentuk_kekerasan"-->

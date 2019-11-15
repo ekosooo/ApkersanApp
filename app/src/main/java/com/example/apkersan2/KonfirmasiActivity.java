@@ -2,12 +2,15 @@ package com.example.apkersan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,8 +19,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.apkersan2.api.BaseApiService;
+import com.example.apkersan2.api.UtilsApi;
+
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class KonfirmasiActivity extends AppCompatActivity {
@@ -31,7 +43,17 @@ public class KonfirmasiActivity extends AppCompatActivity {
     private Double latExtra, lngExtra;
     private VideoView VvBuktiKekerasan;
     private ImageView IvBuktiKekersan;
-    private Button BtBackKonfirmasi;
+    private Button BtBackKonfirmasi, BtComplete;
+
+    ProgressDialog loading;
+
+    Context mContext;
+    BaseApiService mApiService;
+
+    SharedPrefManager sharedPrefManager;
+
+    Bitmap bmp;
+    String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +80,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
         VvBuktiKekerasan    = (VideoView) findViewById(R.id.VvVideoKekerasan);
 
         BtBackKonfirmasi    = (Button) findViewById(R.id.BtBackKonfirmasi);
+        BtComplete          = (Button) findViewById(R.id.BtComplete);
 
         Bundle extra = getIntent().getExtras();
         if (extra != null){
@@ -82,10 +105,11 @@ public class KonfirmasiActivity extends AppCompatActivity {
             tempatExtra         = extra.getString("tempat");
             waktuExtra          = extra.getString("waktu");
             latExtra            = extra.getDouble("lat", 0);
-            lngExtra            = extra.getDouble("long", 0);
+            lngExtra            = extra.getDouble("lng", 0);
         }
 
-        Toast.makeText(getApplicationContext(), KasusIdExtra+KekerasanIdExtra, Toast.LENGTH_SHORT).show();
+        mContext = this;
+        mApiService = UtilsApi.getAPIService();
 
         BtBackKonfirmasi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +120,14 @@ public class KonfirmasiActivity extends AppCompatActivity {
                 getIntent().removeExtra("video");
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+
+        BtComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                pengaduanPost();
             }
         });
 
@@ -116,7 +148,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
             VvBuktiKekerasan.start();
         }else if (bukti.get("gambar") != null){
             byte[] gambar = bukti.getByteArray("gambar");
-            Bitmap bmp    = BitmapFactory.decodeByteArray(gambar, 0, gambar.length);
+            bmp    = BitmapFactory.decodeByteArray(gambar, 0, gambar.length);
             IvBuktiKekersan.setVisibility(View.VISIBLE);
             VvBuktiKekerasan.setVisibility(View.GONE);
             IvBuktiKekersan.setImageBitmap(bmp);
@@ -138,6 +170,66 @@ public class KonfirmasiActivity extends AppCompatActivity {
         TvTempat.setText(tempatExtra);
         TvWaktu.setText(waktuExtra);
 
+        sharedPrefManager = new SharedPrefManager(KonfirmasiActivity.this.getApplicationContext());
+        user_id = sharedPrefManager.getSpId();
+        Toast.makeText(getApplicationContext(), user_id, Toast.LENGTH_SHORT).show();
+
+    }
+
+    public String imageToString(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+        byte[] imgByte = byteArrayOutputStream.toByteArray();
+
+        String imgString = Base64.encodeToString(imgByte, Base64.NO_WRAP);
+
+        return imgString;
+    }
+
+    private void pengaduanPost(){
+        String bukti = imageToString(bmp);
+        String status_pengaduan  = "Menunggu";
+        mApiService.pengaduanPost(
+                user_id,
+                KasusIdExtra,
+                KekerasanIdExtra,
+                tiketExtra,
+                statusExtra,
+                disabilitasExtra,
+                namaExtra,
+                jeniskelaminExtra,
+                usiaExtra,
+                pendidikanExtra,
+                bekerjaExtra,
+                statuskawinExtra,
+                alamatExtra,
+                waktuExtra,
+                tempatExtra,
+                kronologiExtra,
+                bukti,
+                latExtra,
+                lngExtra,
+                status_pengaduan
+        ).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    Log.i("debug", "onResponse: BERHASIL");
+                    loading.dismiss();
+                    Toast.makeText(mContext, "Berhasil membuat pengaduan", Toast.LENGTH_SHORT).show();
+                }else{
+                    Log.i("debug", "OnResponse : Gagal");
+                    loading.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+                loading.dismiss();
+            }
+        });
     }
 
     //font

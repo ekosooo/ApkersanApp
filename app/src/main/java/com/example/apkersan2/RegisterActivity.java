@@ -17,15 +17,8 @@ import android.widget.Toast;
 
 import com.example.apkersan2.api.BaseApiService;
 import com.example.apkersan2.api.UtilsApi;
-import com.example.apkersan2.model.ResponseRegister;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -118,9 +111,9 @@ public class RegisterActivity extends AppCompatActivity {
                 JK,
                 EtAlamat.getText().toString(),
                 EtIDN.getText().toString()+EtTlp.getText().toString()
-        ).enqueue(new Callback<ResponseRegister>() {
+        ).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
                     Log.i("debug", "onResponse: BERHASIL");
                     loading.dismiss();
@@ -133,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseRegister> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
                 loading.dismiss();
             }

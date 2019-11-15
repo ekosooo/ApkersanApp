@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,21 +20,32 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private Button BtBuat;
+    private TextView TvNama;
+
+    SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
 
-        BtBuat = (Button) findViewById(R.id.BtnBuat);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.btm_nav);
+        BtBuat                  = (Button) findViewById(R.id.BtnBuat);
+        bottomNavigationView    = (BottomNavigationView) findViewById(R.id.btm_nav);
 
-//        BtBuat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, BuatActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        TvNama                  = (TextView) findViewById(R.id.TvNamaUser);
+
+        BtBuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DataUmumActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sharedPrefManager = new SharedPrefManager(MainActivity.this.getApplicationContext());
+        String nama = sharedPrefManager.getSpNama();
+        String user_id = sharedPrefManager.getSpId();
+
+        TvNama.setText(nama+user_id);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
