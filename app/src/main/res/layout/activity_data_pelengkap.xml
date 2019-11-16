@@ -58,19 +58,16 @@
                     android:id="@+id/FrameLayar"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
-                    android:visibility="gone"
                     android:layout_gravity="center"
+                    android:visibility="gone"
                     android:background="@color/hitam">
 
                     <ImageView
+                        android:layout_gravity="center"
                         android:id="@+id/IvBuktiKekerasan"
-                        android:scaleType="fitXY"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:visibility="gone"/>
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"/>
 
                     <VideoView
                         android:id="@+id/VvBuktiKekerasan"

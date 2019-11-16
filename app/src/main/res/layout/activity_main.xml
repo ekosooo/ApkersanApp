@@ -19,6 +19,8 @@
         app:itemBackground="@color/putih"
         app:itemIconTint="@drawable/state_list"
         app:itemTextColor="@drawable/state_list"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="20dp"
         app:menu="@menu/menu_bottom_nav_view"
         fontPath="font/SFProDisplay-Bold.ttf"
         tools:ignore="MissingPrefix"/>

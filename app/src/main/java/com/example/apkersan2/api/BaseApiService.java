@@ -1,7 +1,9 @@
 package com.example.apkersan2.api;
 
+import com.example.apkersan2.SharedPrefManager;
 import com.example.apkersan2.model.ResponseKasus;
 import com.example.apkersan2.model.ResponseKekerasan;
+import com.example.apkersan2.model.ResponsePengaduan;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -10,6 +12,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface BaseApiService {
 
@@ -18,6 +21,11 @@ public interface BaseApiService {
 
     @GET("kasus")
     Call<ResponseKasus> getKasus();
+
+    @GET("pengaduan/{id}")
+    Call<ResponsePengaduan> getPengaduan(
+            @Path("id") String user_id
+    );
 
     @FormUrlEncoded
     @POST("register/user")

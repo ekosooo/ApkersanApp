@@ -123,53 +123,62 @@ public class DataPelengkapActivity extends AppCompatActivity {
         BtNextPelengkap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DataPelengkapActivity.this, KonfirmasiActivity.class);
+                if (EtKronologi.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Silahkan masukkan kronologi", Toast.LENGTH_SHORT).show();
+                }else if (EtDateResult.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Silahkan masukkan waktu kejadian", Toast.LENGTH_SHORT).show();
+                }else if (EtKronologi.getText().toString().isEmpty() && EtDateResult.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Silahkan masukkan kronologi dan waktu kejadian", Toast.LENGTH_SHORT).show();
+                } else{
+                    Intent intent = new Intent(DataPelengkapActivity.this, KonfirmasiActivity.class);
+                    //kirim extra
+                    intent.putExtra("tiket", tiketExtra);
+                    intent.putExtra("status", statusExtra);
+                    intent.putExtra("jenis", jenisExtra);
+                    intent.putExtra("bentuk", bentukExtra);
+                    intent.putExtra("kekerasanid", KekerasanIdExtra);
+                    intent.putExtra("kasusid", KasusIdExtra);
 
-                //kirim extra
-                intent.putExtra("tiket", tiketExtra);
-                intent.putExtra("status", statusExtra);
-                intent.putExtra("jenis", jenisExtra);
-                intent.putExtra("bentuk", bentukExtra);
-                intent.putExtra("kekerasanid", KekerasanIdExtra);
-                intent.putExtra("kasusid", KasusIdExtra);
+                    intent.putExtra("nama", namaExtra);
+                    intent.putExtra("jeniskelamin", jeniskelaminExtra);
+                    intent.putExtra("disabilitas", disabilitasExtra);
+                    intent.putExtra("usia", usiaExtra);
+                    intent.putExtra("pendidikan", pendidikanExtra);
+                    intent.putExtra("bekerja", bekerjaExtra);
+                    intent.putExtra("statuskawin", statuskawinExtra);
 
-                intent.putExtra("nama", namaExtra);
-                intent.putExtra("jeniskelamin", jeniskelaminExtra);
-                intent.putExtra("disabilitas", disabilitasExtra);
-                intent.putExtra("usia", usiaExtra);
-                intent.putExtra("pendidikan", pendidikanExtra);
-                intent.putExtra("bekerja", bekerjaExtra);
-                intent.putExtra("statuskawin", statuskawinExtra);
+                    intent.putExtra("kronologi", EtKronologi.getText().toString());
+                    intent.putExtra("alamat", EtAlamat.getText().toString());
+                    intent.putExtra("tempat", SpTempat.getSelectedItem().toString());
+                    intent.putExtra("waktu", EtDateResult.getText().toString());
 
-                intent.putExtra("kronologi", EtKronologi.getText().toString());
-                intent.putExtra("alamat", EtAlamat.getText().toString());
-                intent.putExtra("tempat", SpTempat.getSelectedItem().toString());
-                intent.putExtra("waktu", EtDateResult.getText().toString());
+                    intent.putExtra("lat", latExtra);
+                    intent.putExtra("lng", lngExtra);
 
-                intent.putExtra("lat", latExtra);
-                intent.putExtra("lng", lngExtra);
+                    if (gambar != null) {
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        gambar.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+                        byte[] imgByte = byteArrayOutputStream.toByteArray();
+                        intent.putExtra("gambar", imgByte);
+                    } else if (video != null) {
+                        intent.putExtra("video", video);
+                    } else if (audio != null) {
+                        intent.putExtra("audio", audio);
+                    }
 
-                if (gambar != null){
-                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    gambar.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
-                    byte[] imgByte = byteArrayOutputStream.toByteArray();
-                    intent.putExtra("gambar", imgByte);
-                }else if (video != null){
-                    intent.putExtra("video", video);
-                }else if (audio != null){
-                    intent.putExtra("audio", audio);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
-
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+
         TvUnggah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showTakeDialog();
             }
         });
+
         BtDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,8 +208,8 @@ public class DataPelengkapActivity extends AppCompatActivity {
         String[] pictureDialogItems = {
                 "Galeri",
                 "Kamera",
-                "Video",
-                "Rekaman Suara"
+//                "Video",
+//                "Rekaman Suara"
         };
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {

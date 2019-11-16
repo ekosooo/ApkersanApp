@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
@@ -26,6 +27,7 @@ import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +48,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
     private Button BtBackKonfirmasi, BtComplete;
 
     ProgressDialog loading;
+    SweetAlertDialog pDialog;
 
     Context mContext;
     BaseApiService mApiService;
@@ -53,7 +56,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
 
     Bitmap bmp;
-    String user_id;
+    String user_id, bukti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +129,10 @@ public class KonfirmasiActivity extends AppCompatActivity {
         BtComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                pDialog = new SweetAlertDialog(KonfirmasiActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#009B59"));
+                pDialog.setTitleText("Loading ...");
+                pDialog.show();
                 pengaduanPost();
             }
         });
@@ -172,8 +178,6 @@ public class KonfirmasiActivity extends AppCompatActivity {
 
         sharedPrefManager = new SharedPrefManager(KonfirmasiActivity.this.getApplicationContext());
         user_id = sharedPrefManager.getSpId();
-        Toast.makeText(getApplicationContext(), user_id, Toast.LENGTH_SHORT).show();
-
     }
 
     public String imageToString(Bitmap bitmap)
@@ -188,7 +192,9 @@ public class KonfirmasiActivity extends AppCompatActivity {
     }
 
     private void pengaduanPost(){
-        String bukti = imageToString(bmp);
+        if (bmp != null){
+            bukti = imageToString(bmp);
+        }
         String status_pengaduan  = "Menunggu";
         mApiService.pengaduanPost(
                 user_id,
@@ -215,12 +221,27 @@ public class KonfirmasiActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
-                    Log.i("debug", "onResponse: BERHASIL");
-                    loading.dismiss();
-                    Toast.makeText(mContext, "Berhasil membuat pengaduan", Toast.LENGTH_SHORT).show();
+                    pDialog.dismiss();
+                    new SweetAlertDialog(KonfirmasiActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Sukses")
+                            .setContentText("Pengaduan berhasil dibuat...")
+                            .setConfirmText("OK")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.dismissWithAnimation();
+                                    startActivity(new Intent(KonfirmasiActivity.this, MainActivity.class)
+                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    finish();
+                                }
+                            })
+                            .show();
                 }else{
-                    Log.i("debug", "OnResponse : Gagal");
-                    loading.dismiss();
+                    pDialog.dismiss();
+                    new SweetAlertDialog(KonfirmasiActivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Oops...")
+                            .setContentText("Gagal membuat pengaduan!")
+                            .show();
                 }
             }
 

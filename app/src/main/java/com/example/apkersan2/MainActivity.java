@@ -43,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPrefManager = new SharedPrefManager(MainActivity.this.getApplicationContext());
         String nama = sharedPrefManager.getSpNama();
-        String user_id = sharedPrefManager.getSpId();
 
-        TvNama.setText(nama+user_id);
+        TvNama.setText(nama);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

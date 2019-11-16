@@ -93,26 +93,34 @@ public class DataKorbanActivity extends AppCompatActivity {
         BtNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DataKorbanActivity.this, MapActivity.class);
+                if (EtNama.getText().toString().isEmpty() && EtUsia.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Silahkan masukkan nama dan usia", Toast.LENGTH_SHORT).show();
+                }else if (EtNama.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Silahkan masukkan nama", Toast.LENGTH_SHORT).show();
+                }else if (EtUsia.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Silahkan masukkan usia", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(DataKorbanActivity.this, MapActivity.class);
 
-                //kirim extra
-                intent.putExtra("tiket", tiketExtra);
-                intent.putExtra("status", statusExtra);
-                intent.putExtra("jenis", jenisExtra);
-                intent.putExtra("bentuk", bentukExtra);
-                intent.putExtra("kekerasanid", KekerasanIdExtra);
-                intent.putExtra("kasusid", KasusIdExtra);
+                    //kirim extra
+                    intent.putExtra("tiket", tiketExtra);
+                    intent.putExtra("status", statusExtra);
+                    intent.putExtra("jenis", jenisExtra);
+                    intent.putExtra("bentuk", bentukExtra);
+                    intent.putExtra("kekerasanid", KekerasanIdExtra);
+                    intent.putExtra("kasusid", KasusIdExtra);
 
-                intent.putExtra("nama", EtNama.getText().toString());
-                intent.putExtra("jeniskelamin", JenisKelamin);
-                intent.putExtra("disabilitas", Disablitas);
-                intent.putExtra("usia", EtUsia.getText().toString());
-                intent.putExtra("pendidikan", SpPendidikan.getSelectedItem().toString());
-                intent.putExtra("bekerja", Bekerja);
-                intent.putExtra("statuskawin", SpStatusKawin.getSelectedItem().toString());
+                    intent.putExtra("nama", EtNama.getText().toString());
+                    intent.putExtra("jeniskelamin", JenisKelamin);
+                    intent.putExtra("disabilitas", Disablitas);
+                    intent.putExtra("usia", EtUsia.getText().toString());
+                    intent.putExtra("pendidikan", SpPendidikan.getSelectedItem().toString());
+                    intent.putExtra("bekerja", Bekerja);
+                    intent.putExtra("statuskawin", SpStatusKawin.getSelectedItem().toString());
 
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
             }
         });
 
