@@ -59,6 +59,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/BtLihat"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_lihat"
@@ -98,6 +99,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/BtBantuan"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_bantuan"
@@ -136,6 +138,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/BtProfil"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_profil"
@@ -156,7 +159,7 @@
             android:textColor="@color/hitam"
             android:textSize="12sp"
             android:textAlignment="center"
-            android:text="Profil"
+            android:text="Profile"
             fontPath="font/SFProDisplay-Semibold.ttf"
             tools:ignore="MissingPrefix">
         </TextView>

@@ -114,7 +114,7 @@ public class DataPelengkapActivity extends AppCompatActivity {
         BtBackPelengkap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DataPelengkapActivity.this, DataUmumActivity.class);
+                Intent intent = new Intent(DataPelengkapActivity.this, DataKorbanActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }

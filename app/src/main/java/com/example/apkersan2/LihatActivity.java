@@ -4,11 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.apkersan2.adapter.PengaduanAdapter;
@@ -16,6 +21,7 @@ import com.example.apkersan2.api.BaseApiService;
 import com.example.apkersan2.api.UtilsApi;
 import com.example.apkersan2.model.DataPengaduan;
 import com.example.apkersan2.model.ResponsePengaduan;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +45,20 @@ public class LihatActivity extends AppCompatActivity {
     String user_id;
 
     @BindView(R.id.rvPengaduan) RecyclerView rvpengaduan;
+    @BindView(R.id.shimmer_view_container)
+    ShimmerFrameLayout shimmerFrameLayout;
+    @BindView(R.id.swipe)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.TvAduan)
+    TextView TvAduan;
+    @BindView(R.id.TvDiterima)
+    TextView TvDiterima;
+    @BindView(R.id.TvDitolak)
+    TextView TvDitolak;
+    @BindView(R.id.IvNoData)
+    ImageView IvNoData;
+    @BindView(R.id.TvTidakAdaData)
+    TextView TvTidakAdaData;
 
 
     @Override
@@ -60,31 +80,62 @@ public class LihatActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getAPIService();
         loadDataPengaduan();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                        loadDataPengaduan();
+                    }
+                }, 2000);
+            }
+        });
     }
 
     private void loadDataPengaduan() {
-        progressDialog = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-
+        shimmerFrameLayout.startShimmer();
         mApiService.getPengaduan(
-                user_id
+               user_id
         ).enqueue(new Callback<ResponsePengaduan>() {
             @Override
             public void onResponse(Call<ResponsePengaduan> call, Response<ResponsePengaduan> response) {
                 Log.d("Data pengaduan", String.valueOf(response));
                 if (response.isSuccessful()){
-                    progressDialog.dismiss();
-                    datapengaduan = response.body().getData();
+                    shimmerFrameLayout.stopShimmer();
+                    shimmerFrameLayout.setVisibility(View.GONE);
+
+                    datapengaduan   = response.body().getData();
+
+                    String aduan    = response.body().getAduan();
+                    TvAduan.setText(aduan);
+                    String diterima = response.body().getDiterima();
+                    TvDiterima.setText(diterima);
+                    String ditolak  = response.body().getDitolak();
+                    TvDitolak.setText(ditolak);
+
+                    if (aduan.equals("0")){
+                        IvNoData.setVisibility(View.VISIBLE);
+                        TvTidakAdaData.setVisibility(View.VISIBLE);
+                    }else{
+                        rvpengaduan.setVisibility(View.VISIBLE);
+                    }
+
                     rvpengaduan.setAdapter(new PengaduanAdapter(mContext, datapengaduan));
                     pengaduanAdapter.notifyDataSetChanged();
                 }else{
-                    progressDialog.dismiss();
+                    shimmerFrameLayout.stopShimmer();
+                    shimmerFrameLayout.setVisibility(View.GONE);
                     Toast.makeText(mContext, "Gagal mengambil data pengaduan", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponsePengaduan> call, Throwable t) {
-                progressDialog.dismiss();
+                shimmerFrameLayout.stopShimmer();
+                shimmerFrameLayout.setVisibility(View.GONE);
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });

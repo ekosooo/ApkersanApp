@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/putih"
+    android:paddingRight="25dp"
+    android:paddingLeft="25dp"
+    tools:context=".ProfilActivity">
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/TvProfilKembali"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:textColor="@color/hitam"
+        android:textSize="18sp"
+        android:drawablePadding="20dp"
+        android:drawableLeft="@drawable/ic_arrow_left_black"/>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:id="@+id/EtProfNama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        android:background="@drawable/styleinput"
+        android:padding="10dp"
+        android:inputType="text"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:id="@+id/EtProfEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        android:background="@drawable/styleinput"
+        android:padding="10dp"
+        android:inputType="text"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alamat"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <EditText
+        android:id="@+id/EtProfAlamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/hitam"
+        android:background="@drawable/styleinput"
+        android:padding="10dp"
+        android:inputType="textMultiLine"
+        fontPath="font/SFProDisplay-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Telepon"
+        android:textSize="14sp"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/EtProfTlp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hitam"
+            android:background="@drawable/styleinput"
+            android:padding="10dp"
+            android:hint="+628134500xxxx"
+            android:layout_marginLeft="4dp"
+            android:inputType="number"
+            android:textSize="14sp"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BtUpdate"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_buttonwarna"
+        android:textColor="@color/putih"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+    <Button
+        android:id="@+id/BtLogout"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Keluar"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_buttonkeluar"
+        android:textColor="@color/putih"
+        fontPath="font/SFProDisplay-Medium.ttf"
+        tools:ignore="MissingPrefix"/>
+
+</LinearLayout>

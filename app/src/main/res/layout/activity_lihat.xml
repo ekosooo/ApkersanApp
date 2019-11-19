@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     android:background="@color/putih"
     tools:context=".LihatActivity">
 
@@ -32,10 +32,11 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/TvAduan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="1"
+                android:text="0"
                 android:textColor="@color/hitam"
                 fontPath="font/SFProDisplay-Semibold.ttf"
                 tools:ignore="MissingPrefix"/>
@@ -58,10 +59,11 @@
             android:paddingRight="40dp">
 
             <TextView
+                android:id="@+id/TvDiterima"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="1"
+                android:text="0"
                 android:textColor="@color/hitam"
                 fontPath="font/SFProDisplay-Semibold.ttf"
                 tools:ignore="MissingPrefix"
@@ -83,6 +85,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/TvDitolak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -114,6 +117,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:paddingBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="History Pengaduan"
@@ -122,13 +126,77 @@
             fontPath="font/SFProDisplay-Semibold.ttf"
             tools:ignore="MissingPrefix"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPengaduan"
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical">
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:shimmer_duration="800">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/placeholder_shimmer"/>
+
+                <include layout="@layout/placeholder_shimmer"/>
+
+                <include layout="@layout/placeholder_shimmer"/>
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/IvNoData"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_nodata"/>
+
+                <TextView
+                    android:id="@+id/TvTidakAdaData"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/IvNoData"
+                    android:layout_width="match_parent"
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content"
+                    android:text="Data Tidak Ditemukan"
+                    android:gravity="center"
+                    fontPath="font/SFProDisplay-Semibold.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/rvPengaduan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:overScrollMode="never"/>
+
+            </FrameLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 

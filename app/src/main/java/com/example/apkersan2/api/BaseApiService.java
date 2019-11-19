@@ -66,4 +66,21 @@ public interface BaseApiService {
             @Field("lat") Double lat,
             @Field("lng") Double lng,
             @Field("status_pengaduan") String status_pengaduan);
+
+    @FormUrlEncoded
+    @POST("user/token/{id}")
+    Call<ResponseBody> tokenFcmRequest(
+            @Path("id") String user_id,
+            @Field("fcm_token") String fcm_token
+    );
+
+    @FormUrlEncoded
+    @POST("user/update/{id}")
+    Call<ResponseBody> updateProfileRequest(
+            @Path("id") String user_id,
+            @Field("user_nama") String user_nama,
+            @Field("user_email") String user_email,
+            @Field("user_alamat") String user_alamat,
+            @Field("user_phone") String user_phone
+    );
 }

@@ -6,20 +6,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private Button BtBuat;
+    private Button BtBuat, BtLihat, BtBantuan, BtProfil;
     private TextView TvNama;
 
     SharedPrefManager sharedPrefManager;
@@ -29,14 +35,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BtBuat                  = (Button) findViewById(R.id.BtnBuat);
-        bottomNavigationView    = (BottomNavigationView) findViewById(R.id.btm_nav);
+        BtLihat                 = (Button) findViewById(R.id.BtLihat);
+        BtBantuan               = (Button) findViewById(R.id.BtBantuan);
+        BtProfil                = (Button) findViewById(R.id.BtProfil);
 
+        bottomNavigationView    = (BottomNavigationView) findViewById(R.id.btm_nav);
         TvNama                  = (TextView) findViewById(R.id.TvNamaUser);
 
         BtBuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DataUmumActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        BtLihat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LihatActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        BtBantuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BantuanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        BtProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfilActivity.class);
                 startActivity(intent);
             }
         });
@@ -50,23 +83,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                Intent in;
+                Intent intent;
                 switch (item.getItemId()){
                     case R.id.action_home :
-                        in = new Intent(getBaseContext(), MainActivity.class);
-                        startActivity(in);
-                        overridePendingTransition(0, 0);
+
                         break;
                     case R.id.action_buat :
-//                        in = new Intent(getBaseContext(), BuatActivity.class);
-//                        startActivity(in);
-//                        overridePendingTransition(0, 0);
+                        intent = new Intent(MainActivity.this, DataUmumActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.action_bantuan:
-                        Toast.makeText(MainActivity.this, "Bantuan clicked", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this, BantuanActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.action_profil:
-                        Toast.makeText(MainActivity.this, "Profil clicked", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this, ProfilActivity.class);
+                        startActivity(intent);
                         break;
                 }
 

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#005932"
+    android:paddingRight="10dp"
+    tools:context=".BantuanActivity">
+
+    <TextView
+        android:id="@+id/TvBantuanKembali"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bantuan"
+        android:textColor="@color/putih"
+        android:textSize="18sp"
+        android:drawablePadding="25dp"
+        android:drawableLeft="@drawable/ic_arrow_back"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:src="@drawable/info_menu"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. Pilih menu buat."
+                android:textSize="14sp"
+                android:textColor="@color/putih"
+                fontPath="font/SFProDisplay-Regular.ttf"
+                tools:ignore="MissingPrefix">
+
+            </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:src="@drawable/info_dataumum"
+            />
+
+        <TextView
+            fontPath="font/SFProDisplay-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Masukkan data umum pengaduan."
+            android:textColor="@color/putih"
+            android:textSize="14sp"
+            tools:ignore="MissingPrefix">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:src="@drawable/info_datakorban"
+            />
+
+        <TextView
+            fontPath="font/SFProDisplay-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Masukkan data korban."
+            android:textColor="@color/putih"
+            android:textSize="14sp"
+            tools:ignore="MissingPrefix">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:src="@drawable/info_ambillokasi"
+            />
+
+        <TextView
+            fontPath="font/SFProDisplay-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. Ambil titik lokasi kejadian menggunakan map."
+            android:textColor="@color/putih"
+            android:textSize="14sp"
+            tools:ignore="MissingPrefix">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:src="@drawable/info_datapelengkap"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. Masukkan data pelengkap beserta gambar sebagai bukti jika ada."
+            android:textSize="14sp"
+            android:textColor="@color/putih"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:src="@drawable/info_konfirmasi"
+            />
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6. Lihat keselurahan data, jika sudah benar tekan tombol complete untuk membuat pengaduan."
+            android:textSize="14sp"
+            android:textColor="@color/putih"
+            fontPath="font/SFProDisplay-Regular.ttf"
+            tools:ignore="MissingPrefix">
+
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

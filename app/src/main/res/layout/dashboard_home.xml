@@ -73,7 +73,7 @@
 
     </LinearLayout>
 
-    <include layout="@layout/menu_home"/>
+    <include layout="@layout/menu_home" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.apkersan2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -19,6 +20,10 @@ import android.widget.Toast;
 
 import com.example.apkersan2.api.BaseApiService;
 import com.example.apkersan2.api.UtilsApi;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,6 +51,9 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPrefManager sharedPrefManager;
 
+    String user_id, user_nama, user_alamat, user_email, user_phone;
+    String fcm_token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
         TvDaftar    = (TextView) findViewById(R.id.TvDaftar);
 
         sharedPrefManager = new SharedPrefManager(this);
+        mContext = this;
+        mApiService = UtilsApi.getAPIService();
 
         if (sharedPrefManager.getSpSudahLogin()){
             startActivity(new Intent(LoginActivity.this, MainActivity.class)
@@ -100,9 +110,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mContext = this;
-        mApiService = UtilsApi.getAPIService();
-
         BtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,8 +131,25 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //fungsi get token fcm
+        GetTokenFCM();
     }
 
+    public void GetTokenFCM() {
+       FirebaseInstanceId.getInstance().getInstanceId()
+               .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                   @Override
+                   public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                       if (!task.isSuccessful()){
+                           Log.w("Pesan Token", "Gagal mendapatkan token", task.getException());
+                           return;
+                       }
+
+                       //Get new Instance ID token
+                       fcm_token = task.getResult().getToken();
+                   }
+               });
+    }
 
     public void requestLogin(){
         mApiService.loginRequest(
@@ -144,11 +168,11 @@ public class LoginActivity extends AppCompatActivity {
 
                             sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
 
-                            String user_id = jsonObject.getJSONObject("data").getString("user_id");
-                            String user_nama = jsonObject.getJSONObject("data").getString("user_nama");
-                            String user_email = jsonObject.getJSONObject("data").getString("user_email");
-                            String user_alamat = jsonObject.getJSONObject("data").getString("user_alamat");
-                            String user_phone = jsonObject.getJSONObject("data").getString("user_phone");
+                            user_id = jsonObject.getJSONObject("data").getString("user_id");
+                            user_nama = jsonObject.getJSONObject("data").getString("user_nama");
+                            user_email = jsonObject.getJSONObject("data").getString("user_email");
+                            user_alamat = jsonObject.getJSONObject("data").getString("user_alamat");
+                            user_phone = jsonObject.getJSONObject("data").getString("user_phone");
 
                             //sharedPreferences
                             sharedPrefManager.saveSPString(SharedPrefManager.SP_ID, user_id);
@@ -156,6 +180,9 @@ public class LoginActivity extends AppCompatActivity {
                             sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, user_email);
                             sharedPrefManager.saveSPString(SharedPrefManager.SP_ALAMAT, user_alamat);
                             sharedPrefManager.saveSPString(SharedPrefManager.SP_TELEPON, user_phone);
+
+                            //posttokenfcm to server
+                            postTokenFCM();
 
                             startActivity(new Intent(mContext, MainActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -180,6 +207,28 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("debug", "onFailure : ERROR > " + t.toString());
                 loading.dismiss();
+            }
+        });
+    }
+
+    public void postTokenFCM()
+    {
+        mApiService.tokenFcmRequest(
+                user_id,
+                fcm_token
+        ).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Berhasil post token", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Gagal post token", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Koneksi bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
     }
