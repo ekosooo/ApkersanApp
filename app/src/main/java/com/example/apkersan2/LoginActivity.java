@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -31,6 +32,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     BaseApiService mApiService;
 
     SharedPrefManager sharedPrefManager;
+    SweetAlertDialog pDialog;
 
     String user_id, user_nama, user_alamat, user_email, user_phone;
     String fcm_token;
@@ -123,11 +126,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     if (Patterns.EMAIL_ADDRESS.matcher(EtEmail.getText().toString().trim()).matches()){
-                        loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                        pDialog = new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                        pDialog.getProgressHelper().setBarColor(Color.parseColor("#009B59"));
+                        pDialog.setTitleText("Harap Tunggu ...");
+                        pDialog.show();
                         requestLogin();
                     }
                 }
-
             }
         });
 
@@ -159,13 +164,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    loading.dismiss();
+                    pDialog.dismiss();
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
                         Log.d("Hasil", String.valueOf(jsonObject));
                         if (jsonObject.getString("error").equals("false")){
-                            Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
-
                             sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
 
                             user_id = jsonObject.getJSONObject("data").getString("user_id");
@@ -197,16 +200,15 @@ public class LoginActivity extends AppCompatActivity {
                     catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 } else {
-                    loading.dismiss();
+                    pDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("debug", "onFailure : ERROR > " + t.toString());
-                loading.dismiss();
+                pDialog.dismiss();
             }
         });
     }
@@ -220,9 +222,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "Berhasil post token", Toast.LENGTH_SHORT).show();
+                    Log.d("Post", "Berhasil post token");
                 }else{
-                    Toast.makeText(getApplicationContext(), "Gagal post token", Toast.LENGTH_SHORT).show();
+                    Log.d("Post", "Gagal post token");
                 }
             }
 

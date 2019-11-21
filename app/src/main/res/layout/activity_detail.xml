@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:background="@color/hitam">
+
+                    <ImageView
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/IvDetBukti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageButton
+                        android:id="@+id/BtBackDetail"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/bg_buttonback"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_arrow_back"
+                        android:stateListAnimator="@null"/>
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No Tiket"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetTiket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Korban"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kasus"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetKasus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bentuk Kekerasan"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetBentuk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Waktu Kejadian"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetWaktu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Kejadian"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kronologi"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetKronologi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Status Pengaduan"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tindak Lanjut"
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+                <TextView
+                    android:id="@+id/TvDetTindak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lorem.."
+                    android:textSize="14sp"
+                    fontPath="font/SFProDisplay-Regular.ttf"
+                    tools:ignore="MissingPrefix"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

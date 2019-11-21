@@ -57,9 +57,8 @@
                 <FrameLayout
                     android:id="@+id/FrameLayar"
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:visibility="gone"
                     android:background="@color/hitam">
 
                     <ImageView
@@ -67,7 +66,7 @@
                         android:id="@+id/IvBuktiKekerasan"
                         android:layout_width="wrap_content"
                         android:visibility="gone"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="180dp"/>
 
                     <VideoView
                         android:id="@+id/VvBuktiKekerasan"
@@ -217,7 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/button_lokasi"
+                android:background="@drawable/bg_buttonwarna"
                 android:drawableLeft="@drawable/ic_arrow_back"
                 android:text="Back"
                 android:textColor="@color/putih"
@@ -240,7 +239,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/button_lokasi"
+                android:background="@drawable/bg_buttonwarna"
                 android:drawableRight="@drawable/ic_arrow_next"
                 android:text="Next"
                 android:textColor="@color/putih"

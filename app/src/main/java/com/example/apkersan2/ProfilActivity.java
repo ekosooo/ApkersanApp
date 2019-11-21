@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,11 @@ import android.widget.Toast;
 
 import com.example.apkersan2.api.BaseApiService;
 import com.example.apkersan2.api.UtilsApi;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.ResponseBody;
@@ -60,7 +66,7 @@ public class ProfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
                 startActivity(new Intent(ProfilActivity.this, LoginActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 finish();
             }
         });
@@ -69,6 +75,9 @@ public class ProfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pDialog = new SweetAlertDialog(ProfilActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#009B59"));
+                pDialog.setTitleText("Loading ...");
+                pDialog.show();
                 updateProfile();
             }
         });
@@ -91,31 +100,54 @@ public class ProfilActivity extends AppCompatActivity {
 
     private void updateProfile(){
         mApiService.updateProfileRequest(
-             user_id,
-             EtNama.getText().toString(),
-             EtEmail.getText().toString(),
-             EtAlamat.getText().toString(),
-             EtTlp.getText().toString()
+                user_id,
+                EtNama.getText().toString(),
+                EtEmail.getText().toString(),
+                EtAlamat.getText().toString(),
+                EtTlp.getText().toString()
         ).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
                     pDialog.dismiss();
-                    new SweetAlertDialog(ProfilActivity.this, SweetAlertDialog.SUCCESS_TYPE)
-                            .setTitleText("Sukses")
-                            .setContentText("Profile berhasil diupdate," +
-                                    "Silahkan login kembali untuk melihat data yang telah terupdate.")
-                            .setConfirmText("OK")
-                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sDialog) {
-                                    sDialog.dismissWithAnimation();
-                                    startActivity(new Intent(ProfilActivity.this, MainActivity.class)
-                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                                    finish();
-                                }
-                            })
-                            .show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        if (jsonObject.getString("eror").equals("false")) {
+
+                            String user_nama = jsonObject.getJSONObject("data").getString("user_nama");
+                            String user_email = jsonObject.getJSONObject("data").getString("user_email");
+                            String user_alamat = jsonObject.getJSONObject("data").getString("user_alamat");
+                            String user_phone = jsonObject.getJSONObject("data").getString("user_phone");
+
+                            //sharedPreferences
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA, user_nama);
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, user_email);
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_ALAMAT, user_alamat);
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_TELEPON, user_phone);
+
+                            new SweetAlertDialog(ProfilActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                                    .setTitleText("Sukses")
+                                    .setContentText("Profile berhasil diupdate")
+                                    .setConfirmText("OK")
+                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+                                            sDialog.dismissWithAnimation();
+                                            startActivity(new Intent(ProfilActivity.this, MainActivity.class)
+                                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                                            finish();
+                                        }
+                                    })
+                                    .show();
+                        }else{
+                            String error = jsonObject.getString("error");
+                            Toast.makeText(mContext, error, Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }else{
                     pDialog.dismiss();
                     new SweetAlertDialog(ProfilActivity.this, SweetAlertDialog.ERROR_TYPE)

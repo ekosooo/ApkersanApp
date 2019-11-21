@@ -77,7 +77,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_lokasi"
+                android:background="@drawable/bg_buttonwarna"
                 android:text="Ambil Tititk Lokasi"
                 android:textAllCaps="false"
                 android:textColor="@color/putih"

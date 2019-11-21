@@ -30,13 +30,13 @@ public class DataPengaduan {
     private String kronologi;
     @SerializedName("bukti")
     @Expose
-    private Object bukti;
+    private String bukti;
     @SerializedName("status_pengaduan")
     @Expose
     private String statusPengaduan;
     @SerializedName("tindak_lanjut")
     @Expose
-    private Object tindakLanjut;
+    private String tindakLanjut;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -105,11 +105,11 @@ public class DataPengaduan {
         this.kronologi = kronologi;
     }
 
-    public Object getBukti() {
+    public String getBukti() {
         return bukti;
     }
 
-    public void setBukti(Object bukti) {
+    public void setBukti(String bukti) {
         this.bukti = bukti;
     }
 
@@ -121,11 +121,11 @@ public class DataPengaduan {
         this.statusPengaduan = statusPengaduan;
     }
 
-    public Object getTindakLanjut() {
+    public String getTindakLanjut() {
         return tindakLanjut;
     }
 
-    public void setTindakLanjut(Object tindakLanjut) {
+    public void setTindakLanjut(String tindakLanjut) {
         this.tindakLanjut = tindakLanjut;
     }
 

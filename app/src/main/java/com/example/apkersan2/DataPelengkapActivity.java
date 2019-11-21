@@ -34,6 +34,7 @@ import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -157,7 +158,7 @@ public class DataPelengkapActivity extends AppCompatActivity {
 
                     if (gambar != null) {
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                        gambar.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+                        gambar.compress(Bitmap.CompressFormat.JPEG, 10, byteArrayOutputStream);
                         byte[] imgByte = byteArrayOutputStream.toByteArray();
                         intent.putExtra("gambar", imgByte);
                     } else if (video != null) {
@@ -206,8 +207,8 @@ public class DataPelengkapActivity extends AppCompatActivity {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("Bukti Kekerasan");
         String[] pictureDialogItems = {
-                "Galeri",
                 "Kamera",
+                "Galeri",
 //                "Video",
 //                "Rekaman Suara"
         };
@@ -217,10 +218,10 @@ public class DataPelengkapActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which){
                             case 0:
-                                choosePhotoFromGallary();
+                                takePhotoFromCamera();
                                 break;
                             case 1:
-                                takePhotoFromCamera();
+                                choosePhotoFromGallary();
                                 break;
                             case 2:
                                 chooseVideoFromGallary();
@@ -241,7 +242,7 @@ public class DataPelengkapActivity extends AppCompatActivity {
     }
 
     public void choosePhotoFromGallary(){
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         startActivityForResult(intent, GALLERY);
     }
@@ -264,9 +265,9 @@ public class DataPelengkapActivity extends AppCompatActivity {
             return;
         }
         if (requestCode == GALLERY && data != null){
-            Uri contentURI = data.getData();
+            Uri path = data.getData();
             try {
-                gambar = MediaStore.Images.Media.getBitmap(getContentResolver(), contentURI);
+                gambar = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
                 IvBukti.setImageBitmap(gambar);
                 IvBukti.setVisibility(View.VISIBLE);
                 VvBukti.setVisibility(View.GONE);
@@ -275,7 +276,23 @@ public class DataPelengkapActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(DataPelengkapActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
             }
-        }else if (requestCode == VIDEO && data != null){
+        }
+        else if (requestCode == CAMERA){
+            Uri path = data.getData();
+            try {
+                gambar = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+//                gambar = (Bitmap) data.getExtras().get("data");
+                IvBukti.setImageBitmap(gambar);
+                IvBukti.setVisibility(View.VISIBLE);
+                VvBukti.setVisibility(View.GONE);
+                FrLatarHitam.setVisibility(View.VISIBLE);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (requestCode == VIDEO && data != null){
             video = data.getData();
             VvBukti.setVisibility(View.VISIBLE);
             IvBukti.setVisibility(View.GONE);
@@ -292,13 +309,6 @@ public class DataPelengkapActivity extends AppCompatActivity {
             VvBukti.setVideoURI(audio);
             VvBukti.setMediaController(new MediaController(this));
             VvBukti.start();
-        }
-        else if (requestCode == CAMERA){
-            gambar = (Bitmap) data.getExtras().get("data");
-            IvBukti.setImageBitmap(gambar);
-            IvBukti.setVisibility(View.VISIBLE);
-            VvBukti.setVisibility(View.GONE);
-            FrLatarHitam.setVisibility(View.VISIBLE);
         }
     }
 

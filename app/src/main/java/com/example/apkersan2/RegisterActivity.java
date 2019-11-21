@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.apkersan2.api.BaseApiService;
 import com.example.apkersan2.api.UtilsApi;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String JK;
 
     ProgressDialog loading;
+    SweetAlertDialog pDialog;
 
     Context mContext;
     BaseApiService mApiService;
@@ -85,7 +88,10 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Email tidak sesuai", Toast.LENGTH_SHORT).show();
                 }else{
                     if (Patterns.EMAIL_ADDRESS.matcher(EtEmail.getText().toString().trim()).matches()){
-                        loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                        pDialog = new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                        pDialog.getProgressHelper().setBarColor(Color.parseColor("#009B59"));
+                        pDialog.setTitleText("Harap Tunggu ...");
+                        pDialog.show();
                         requestRegister();
                     }
                 }
@@ -116,19 +122,31 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
                     Log.i("debug", "onResponse: BERHASIL");
-                    loading.dismiss();
-                    Toast.makeText(mContext, "Berhasil Registrasi", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(mContext, LoginActivity.class));
+                    pDialog.dismiss();
+                    new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Sukses")
+                            .setContentText("Berhasil mendaftarkan diri")
+                            .setConfirmText("OK")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.dismissWithAnimation();
+                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class)
+                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    finish();
+                                }
+                            })
+                            .show();
                 }else {
                     Log.i("debug", "OnResponse : Gagal");
-                    loading.dismiss();
+                    pDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
-                loading.dismiss();
+                pDialog.dismiss();
             }
         });
 

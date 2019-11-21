@@ -1,13 +1,11 @@
 package com.example.apkersan2.api;
 
-import com.example.apkersan2.SharedPrefManager;
 import com.example.apkersan2.model.ResponseKasus;
 import com.example.apkersan2.model.ResponseKekerasan;
 import com.example.apkersan2.model.ResponsePengaduan;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.CallAdapter;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -83,4 +81,5 @@ public interface BaseApiService {
             @Field("user_alamat") String user_alamat,
             @Field("user_phone") String user_phone
     );
+
 }

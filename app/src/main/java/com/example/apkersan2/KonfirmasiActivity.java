@@ -153,8 +153,9 @@ public class KonfirmasiActivity extends AppCompatActivity {
             VvBuktiKekerasan.setMediaController(new MediaController(this));
             VvBuktiKekerasan.start();
         }else if (bukti.get("gambar") != null){
-            byte[] gambar = bukti.getByteArray("gambar");
-            bmp    = BitmapFactory.decodeByteArray(gambar, 0, gambar.length);
+            byte[] gambar   = bukti.getByteArray("gambar");
+            bmp             = BitmapFactory.decodeByteArray(gambar, 0, gambar.length);
+//            bmp     = (Bitmap) getIntent().getParcelableExtra("gambar");
             IvBuktiKekersan.setVisibility(View.VISIBLE);
             VvBuktiKekerasan.setVisibility(View.GONE);
             IvBuktiKekersan.setImageBitmap(bmp);
@@ -183,7 +184,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
     public String imageToString(Bitmap bitmap)
     {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, byteArrayOutputStream);
         byte[] imgByte = byteArrayOutputStream.toByteArray();
 
         String imgString = Base64.encodeToString(imgByte, Base64.NO_WRAP);

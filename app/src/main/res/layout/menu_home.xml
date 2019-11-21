@@ -22,7 +22,7 @@
                 android:id="@+id/BtnBuat"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/bg_buat"
+                android:background="@drawable/ripple"
                 android:stateListAnimator="@null" />
 
             <ImageView
@@ -62,7 +62,7 @@
                 android:id="@+id/BtLihat"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/bg_lihat"
+                android:background="@drawable/ripple"
                 android:stateListAnimator="@null" />
 
             <ImageView
@@ -102,7 +102,7 @@
                 android:id="@+id/BtBantuan"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/bg_bantuan"
+                android:background="@drawable/ripple"
                 android:stateListAnimator="@null" />
 
             <ImageView
@@ -141,7 +141,7 @@
                 android:id="@+id/BtProfil"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/bg_profil"
+                android:background="@drawable/ripple"
                 android:stateListAnimator="@null" />
 
             <ImageView
