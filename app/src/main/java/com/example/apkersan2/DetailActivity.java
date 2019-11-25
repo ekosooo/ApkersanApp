@@ -2,6 +2,7 @@ package com.example.apkersan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class DetailActivity extends AppCompatActivity {
 
     private TextView TvTiket, TvKorban, TvKasus, TvBentuk, TvWaktu, TvAlamat, TvKronologi, TvStatus, TvTindak;
@@ -19,7 +22,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private String tiketExtra, korbanExtra, kasusExtra, bentukExtra, waktuExtra, alamatExtra, kronologiExtra, statusExtra, tindakExtra, buktiExtra;
 
-    private String path = "http://192.168.1.3:8000/bukti/";
+    private String path = "http://192.168.1.6:8000/bukti/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,5 +75,9 @@ public class DetailActivity extends AppCompatActivity {
         TvTindak.setText(tindakExtra);
         Picasso.get().load(path + buktiExtra).into(IvBukti);
 
+    }
+
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

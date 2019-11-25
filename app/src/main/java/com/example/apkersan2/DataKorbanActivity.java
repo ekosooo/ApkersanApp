@@ -27,6 +27,8 @@ public class DataKorbanActivity extends AppCompatActivity {
 
     private String JenisKelamin, Bekerja, Disablitas;
 
+    Context mContext;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +127,6 @@ public class DataKorbanActivity extends AppCompatActivity {
         });
 
     }
-
 
     //font
     @Override

@@ -72,6 +72,9 @@ dependencies {
     //image
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    implementation 'com.github.mukeshsolanki:liquidrefreshlayout:1.0.1'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

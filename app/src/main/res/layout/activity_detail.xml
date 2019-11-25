@@ -61,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="No Tiket"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -79,6 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nama Korban"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -97,6 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Jenis Kasus"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -115,6 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Bentuk Kekerasan"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -133,6 +137,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Waktu Kejadian"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -151,6 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Alamat Kejadian"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -169,6 +175,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Kronologi"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -187,6 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Status Pengaduan"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>
@@ -205,6 +213,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tindak Lanjut"
+                    android:textColor="@color/hitam"
                     android:textSize="14sp"
                     fontPath="font/SFProDisplay-Regular.ttf"
                     tools:ignore="MissingPrefix"/>

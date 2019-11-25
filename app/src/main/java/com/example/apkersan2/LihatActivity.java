@@ -22,6 +22,7 @@ import com.example.apkersan2.api.UtilsApi;
 import com.example.apkersan2.model.DataPengaduan;
 import com.example.apkersan2.model.ResponsePengaduan;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.madapps.liquid.LiquidRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +48,10 @@ public class LihatActivity extends AppCompatActivity {
     @BindView(R.id.rvPengaduan) RecyclerView rvpengaduan;
     @BindView(R.id.shimmer_view_container)
     ShimmerFrameLayout shimmerFrameLayout;
-    @BindView(R.id.swipe)
-    SwipeRefreshLayout swipeRefreshLayout;
+    //    @BindView(R.id.swipe)
+//    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.refreshLayout)
+    LiquidRefreshLayout refreshLayout;
     @BindView(R.id.TvAduan)
     TextView TvAduan;
     @BindView(R.id.TvDiterima)
@@ -81,16 +84,21 @@ public class LihatActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         loadDataPengaduan();
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        refreshLayout.setOnRefreshListener(new LiquidRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh() {
+            public void completeRefresh() {
+            }
+
+            @Override
+            public void refreshing() {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        swipeRefreshLayout.setRefreshing(false);
+                        refreshLayout.finishRefreshing();
                         loadDataPengaduan();
                     }
-                }, 2000);
+                },2000);
+
             }
         });
     }
@@ -98,7 +106,7 @@ public class LihatActivity extends AppCompatActivity {
     private void loadDataPengaduan() {
         shimmerFrameLayout.startShimmer();
         mApiService.getPengaduan(
-               user_id
+                user_id
         ).enqueue(new Callback<ResponsePengaduan>() {
             @Override
             public void onResponse(Call<ResponsePengaduan> call, Response<ResponsePengaduan> response) {

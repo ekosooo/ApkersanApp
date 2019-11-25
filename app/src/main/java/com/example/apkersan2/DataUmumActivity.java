@@ -1,12 +1,16 @@
 package com.example.apkersan2;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -159,7 +163,7 @@ public class DataUmumActivity extends AppCompatActivity {
                         listDeskripsi.add(Deskripsi);
                     }
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
-                            android.R.layout.simple_spinner_item, listSpinner);
+                            R.layout.spinner_item_text, listSpinner);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     SpBentukKekerasan.setAdapter(adapter);
                 } else {
@@ -191,8 +195,10 @@ public class DataUmumActivity extends AppCompatActivity {
                         String DekripsiKasus     = KasusItems.get(i).getKasusDeskripsi();
                         listDeskripsiKasus.add(DekripsiKasus);
                     }
+
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
-                            android.R.layout.simple_spinner_item, listKasus);
+                            R.layout.spinner_item_text, listKasus);
+
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     SpJenisKasus.setAdapter(adapter);
                 } else{
