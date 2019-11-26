@@ -40,16 +40,14 @@ public class LihatActivity extends AppCompatActivity {
     private RecyclerView.Adapter pengaduanAdapter;
     BaseApiService mApiService;
     Context mContext;
-    ProgressDialog progressDialog;
 
     SharedPrefManager sharedPrefManager;
     String user_id;
 
-    @BindView(R.id.rvPengaduan) RecyclerView rvpengaduan;
+    @BindView(R.id.rvPengaduan)
+    RecyclerView rvpengaduan;
     @BindView(R.id.shimmer_view_container)
     ShimmerFrameLayout shimmerFrameLayout;
-    //    @BindView(R.id.swipe)
-//    SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.refreshLayout)
     LiquidRefreshLayout refreshLayout;
     @BindView(R.id.TvAduan)

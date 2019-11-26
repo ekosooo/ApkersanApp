@@ -152,11 +152,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <include layout="@layout/placeholder_shimmer"/>
+                        <include layout="@layout/shimmer_pengaduan"/>
 
-                        <include layout="@layout/placeholder_shimmer"/>
+                        <include layout="@layout/shimmer_pengaduan"/>
 
-                        <include layout="@layout/placeholder_shimmer"/>
+                        <include layout="@layout/shimmer_pengaduan"/>
 
                     </LinearLayout>
 

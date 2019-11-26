@@ -8,7 +8,74 @@
     android:background="@color/putih"
     android:orientation="vertical">
 
-    <include layout="@layout/dashboard_home"/>
+    <include layout="@layout/dashboard_home"
+        android:id="@+id/dashboard_home"/>
+
+    <RelativeLayout
+        android:id="@+id/RLTitle"
+        android:layout_below="@id/dashboard_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berita"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/hitam"
+            fontPath="font/SFProDisplay-Bold.ttf"
+            tools:ignore="MissingPrefix"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lainnya"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:textSize="13sp"
+            android:textColor="@color/hijauflat"
+            fontPath="font/SFProDisplay-Semibold.ttf"
+            tools:ignore="MissingPrefix"/>
+    </RelativeLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_below="@id/RLTitle"
+        android:id="@+id/shimmer_berita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:shimmer_duration="800">
+
+        <LinearLayout
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+           <include layout="@layout/shimmer_berita"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_below="@id/RLTitle"
+        android:id="@+id/rvBerita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="horizontal"
+        android:overScrollMode="never"
+        android:visibility="gone"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btm_nav"
@@ -24,7 +91,5 @@
         app:menu="@menu/menu_bottom_nav_view"
         fontPath="font/SFProDisplay-Bold.ttf"
         tools:ignore="MissingPrefix"/>
-
-
 
 </RelativeLayout>

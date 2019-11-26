@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="170dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:background="#DDDDDD"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ImageView>
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_marginTop="8dp"
+            android:layout_width="130dp"
+            android:layout_height="12dp"
+            android:background="#DDDDDD"
+            />
+
+        <View
+            android:layout_marginTop="8dp"
+            android:layout_width="150dp"
+            android:layout_height="12dp"
+            android:background="#DDDDDD"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="170dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:background="#DDDDDD"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ImageView>
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_marginTop="8dp"
+            android:layout_width="130dp"
+            android:layout_height="12dp"
+            android:background="#DDDDDD"
+            />
+
+        <View
+            android:layout_marginTop="8dp"
+            android:layout_width="150dp"
+            android:layout_height="12dp"
+            android:background="#DDDDDD"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

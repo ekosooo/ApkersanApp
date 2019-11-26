@@ -1,11 +1,13 @@
 package com.example.apkersan2.api;
 
+import com.example.apkersan2.model.ResponseBerita;
 import com.example.apkersan2.model.ResponseKasus;
 import com.example.apkersan2.model.ResponseKekerasan;
 import com.example.apkersan2.model.ResponsePengaduan;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -16,6 +18,9 @@ public interface BaseApiService {
 
     @GET("kekerasan")
     Call<ResponseKekerasan> getKekerasan();
+
+    @GET("berita")
+    Call<ResponseBerita> getBerita();
 
     @GET("kasus")
     Call<ResponseKasus> getKasus();
