@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         beritaAdapter   = new BeritaAdapter(mContext, databerita);
-//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rvberita.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvberita.setItemAnimator(new DefaultItemAnimator());
         rvberita.setAdapter(beritaAdapter);
